@@ -1,0 +1,164 @@
+html{
+    background-color: rgb(247, 240, 241);
+}
+
+.header{
+    padding:100px;
+    height:200px;
+    background-image: url(./pics2/makeup7.jfif);
+    text-align: center;
+    color: rgb(201, 10, 10);
+    border: 1px lightsalmon dotted;
+    border-radius: 20px;
+    }
+    h1{
+        font-family: fantasy;
+        position: relative;
+        right: 200px;
+        color: rgb(201, 10, 10);
+    }
+    h4{
+        font-family: cursive;
+        color: black;
+        position: relative;
+        right: 200px;
+        
+    }
+    .container{
+        display:grid;
+        grid-template-columns:auto auto auto;
+        justify-items: center;
+        gap: 10px;
+        border-bottom: 1px solid rgb(214, 209, 209);
+        padding: 30px;
+
+    }
+
+    .item{
+        margin-top: 40px;
+        margin-bottom: 40px;
+        width:400px;
+        height: 200px;
+        background-color: rgb(243, 184, 161);
+        border-radius:30px;
+        text-align: center;
+        color: whitesmoke;
+
+        animation: ShowUp .5s;
+    }
+    
+    .item1{
+        margin-top: 40px;
+        margin-bottom: 40px;
+        width:400px;
+        height: 200px;
+        background-color: rgb(223, 163, 223);
+        border-radius:30px;
+        text-align: center;
+        color: whitesmoke;
+        
+        
+        animation: ShowUp .5s;
+        animation-delay: 1s;
+
+    }
+    
+    .item2{ 
+        margin-top: 40px;
+        margin-bottom: 40px;
+        width:400px;
+        height: 200px;
+        background-image:url(./pics2/makeup8.jpg) ;
+        border-radius: 30px;
+        border: 1px double plum;
+        text-align: center;
+        
+        
+        animation: ShowUp .5s;
+        animation-delay: 2s;
+        
+    }
+    .wrapper{ 
+        display:grid;
+        grid-template-columns:300px auto;
+    }
+    .sideNavBar{
+        background-color: rgb(211, 207, 208);
+        padding-top: 30px;
+        box-sizing: border-box;
+    }
+    
+    .sideNavBar ul{
+        list-style-type:none;
+    }
+       
+    
+    
+
+    .merchandise{
+        display:inline-grid;
+        grid-template-columns: auto auto auto auto auto;
+        background-color: rgb(241, 236, 237);
+    }
+    .product{
+        width:200px;
+        height: 300px;
+        border-radius: 10px;
+        margin: 20px;
+        border: 1px dotted rgb(146, 136, 136);
+        background-color: rgb(227, 214, 228);
+        box-sizing: border-box;
+        text-align: center;   
+        padding-top: 20px;
+    }
+
+    @media only screen and (max-width: 900px) {
+        /* two columns */
+        .wrapper {
+            grid-template-columns: auto auto;
+        }
+    }
+    
+    @media only screen and (max-width: 450px) {
+        /* 1 column */
+        .wrapper {
+            grid-template-columns: auto;
+        }
+    }
+    
+
+    @keyframes ShowUp{
+    0%{
+        opacity: 0;
+        transform: rotate(0deg);
+    }
+    25%{opacity:0.25;
+        transform: rotate(360deg)
+
+    }
+    50%{
+        opacity:0.5;
+        transform: rotate(720deg);
+    }
+    75%{
+        opacity:0.75;
+        transform: rotate(360deg);
+    }
+    100%{
+        opacity:1;
+        transform: rotate(0deg);
+
+    }
+
+
+
+
+
+
+
+
+    }
+
+    
+
+        
