@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+
+// https://regex101.com/r/w9TXHF/1
+
+
+
+      //return true if it can find or false if it can't find.
+      let string = "all Over the worldy";
+
+      let regexp = /\S*@\S*\.\S\S/
+      let email = 'davis@walla.c'
+      // let text = /@[a-z]{1,}[a-z]\.[a-z][a-z];/
+      // let regexp = new RegExp(text);
+      let results = regexp.test(email);
+      console.dir(results);
+      if (results === true) {
+        console.log(`I was able to find "${email}" `);
+      } else {
+        console.log(`"${email}" was not found `);
+      }
+    </script>
+  </body>
+</html>
