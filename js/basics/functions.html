@@ -11,10 +11,14 @@
     <script>
 
         function add(a, b) {
+            // local scope: a exists and is 2; b exists and eq 3
             return a + b
         }
-
+        
         let x = add(2, 3)
+
+        //let a =2
+        //let b = 3
         console.log(x);
 
         //three way to write a function
