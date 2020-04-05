@@ -8,17 +8,21 @@
 </head>
 
 <body>
-    <input type='text' onkeydown="setToDOM(event)" />
+    <input type='text' onkeyup="setToDOM(event)" />
     <input type="color" oninput="choseColor(event)" />
-    <input type ="number"/>
-    <input type ="month" oninput="changeMonth(event)"/>
-
+    <input type="number" oninput="multiply(event)"/>
+    <input type="month" oninput="changeMonth(event)" />
+    <p id='textOutput'><span>start</span></p>
+    <p id='secontOuptput'></p>
     <script>
 
+        const outputParagraph = document.getElementById('textOutput')
+
         function setToDOM(e) {
-            console.log('key up')
-            console.log(e.target.value)
-            console.log(e.key)
+            const value = e.target.value;
+
+            outputParagraph.innerText = value;
+
         }
 
         function changeMonth(e) {
@@ -28,9 +32,26 @@
 
         function choseColor(e) {
             console.log('chosing a color')
-            console.log(e.target.value)
+            const color = e.target.value;
+            outputParagraph.style.color = color;
 
         }
+
+        function multiply(e){
+            let value = e.target.value;
+
+            let newParagraph = outputParagraph.innerHTML;
+            let parg = '';
+            for(let i=0; i<value;i++){
+                parg+= newParagraph
+            }
+
+            const secontOuptput = document.getElementById('secontOuptput');
+            secontOuptput.innerHTML = parg;
+           
+        }
+
+
 
     </script>
 </body>
