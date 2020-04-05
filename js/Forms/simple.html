@@ -9,13 +9,27 @@
 
 <body>
     <input type='text' onkeydown="setToDOM(event)" />
-    <input type="color" />
+    <input type="color" oninput="choseColor(event)" />
+    <input type ="number"/>
+    <input type ="month" oninput="changeMonth(event)"/>
+
     <script>
 
         function setToDOM(e) {
             console.log('key up')
             console.log(e.target.value)
             console.log(e.key)
+        }
+
+        function changeMonth(e) {
+            console.log('chose a month')
+            console.log(e.target.value)
+        }
+
+        function choseColor(e) {
+            console.log('chosing a color')
+            console.log(e.target.value)
+
         }
 
     </script>
