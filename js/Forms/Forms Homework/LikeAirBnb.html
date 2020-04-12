@@ -7,6 +7,7 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='LikeAirBnbCss.css'>
     <!-- <script src='main.js'></script> -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -59,6 +60,7 @@
                 <button type="submit">Search</button>
              </div>
         </form>
+        <div class="modal" id='message'>message</div>
     </div>
 </div>
 
@@ -86,6 +88,20 @@
 
 <script>
 
+    class Travelr{
+        constructor(location, checkin, checkout, guests){
+            this.location = location;
+            this.checkin = checkin;
+            this.checkout = checkout;
+            this.guests = guests;
+        }
+
+        sendConformation(){
+            let messageModal = document.getElementById('message')
+            messageModal.style.display = 'block'
+            messageModal.innerText = `Thank you your request for ${this.guests} was recviced`;
+        }
+    }
 
 
     function getFormInformation(e) {
@@ -96,7 +112,9 @@
             let checkout = e.target.elements.checkOutDate.value;
             let guests = e.target.elements.guests.value
 
-            console.log(location, checkin, checkout, guests);
+            let travler = new Travelr(location, checkin, checkout, guests)
+           
+            travler.sendConformation();
     }
 
 </script>
