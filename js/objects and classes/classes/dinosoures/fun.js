@@ -13,12 +13,21 @@ class Dino {
 
         this.div = document.createElement('div');
         this.div.innerHTML = `<img src='${this.imgSrc}'>`;
+        this.div.style.left='0px';
+        this.div.style.top='0px';
         document.body.appendChild(this.div);
     }
 
     moveDino(direction) {
         //get it's current location
-       const x = this.div.getBoundingClientRect().left
+        console.dir(this.div.style)
+       let x = this.div.style.left;
+       console.log(x)
+       x = x.replace('px','');
+       console.log(x)
+       x = parseInt(x);
+       console.log(x)
+       console.dir(this.div)
        const y = this.div.clientTop;
 
        switch (direction) {
@@ -33,10 +42,11 @@ class Dino {
             console.log('left', x);
             console.dir(this.div)
            
-            this.div.style.offsetLeft = `${x-10}px`;
+            this.div.style.left = `${x-20}px`;
             break;
         case "ArrowRight":
             console.log('right');
+            this.div.style.left =  `${x+20}px`;
             break;
         default:
 
@@ -46,10 +56,10 @@ class Dino {
 
 let dino1 = new Dino('pic/dino1.png', 'dino1');
 
-dino1.addDinoToDom();
+
 
 let dino2 = new Dino('pic/dino2.png', 'dino2');
-dino2.addDinoToDom();
+
 
 
 

@@ -1,3 +1,8 @@
+html, body{
+    margin: 0px;
+    width: 100vw;
+    height: 100vh;
+}
 img{
     
     height:100px;
@@ -7,4 +12,6 @@ img{
 div{
     position: relative;
     transition: all 200ms;
+    left:0px;
+    top:0px;
 }
