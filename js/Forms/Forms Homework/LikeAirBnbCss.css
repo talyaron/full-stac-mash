@@ -1,0 +1,214 @@
+
+
+.container {
+    background-image: url("./pics/home.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;  /* viewport */
+    height: 100vh;
+}
+
+.container a {
+    text-decoration: none;
+    padding:6px 12px;
+    color: wheat;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.7em;
+    font-weight: bold;
+}
+
+.container a:hover {
+    border: solid 1px lightgray;
+    border-radius: 8px;
+    background: lightgray;
+    color: darkslategray;
+}
+
+.container ul {
+    padding-top: 40px; 
+    padding-left: 20px;
+    display: grid;
+    grid-template-columns: repeat(12, 8%);
+    /*grid-template-rows: 40px 20px;*/
+    list-style-type: none;
+}
+
+.container li:first-child {
+  grid-column-start: 8;
+}
+
+header {
+    height: 8vh;
+}
+
+.signup-form { /* div */
+    font-family: 'Roboto', sans-serif; 
+    width: 100vw;  /* viewport */
+    height: 90vh;
+    /*margin: 0 auto;*/
+    padding: 90px; 
+}
+
+.signup-form form {
+    color: darkslategray;
+    width: 350px;
+    border-radius: 12px;
+    /*margin-bottom: 15px;*/
+    background: lightgrey;
+    /*box-shadow: 0px 2px 2px rgba(0,0,0,0.3); */
+    padding: 30px;
+    /* position: fixed; */
+    /* position: sticky; */
+}
+
+.signup-form .form-group {
+    margin-bottom: 20px; 
+}
+
+#checkin, #checkout {
+    display: inline-block;
+    /* margin-inline-start: 0em !important; */
+}
+
+/*
+.signup-form input[type="checkbox"]{
+    margin-top: 3px;
+}
+*/
+
+.signup-form button {
+    font-weight: bold;
+}
+
+#news, #advertise {
+    padding-top: 2%;
+    padding-left: 5%;
+}
+
+#news p {
+    width: 90%;
+    border: 1px solid;
+    border-color: peru;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+#advertise ul {
+    padding-top: 10px; 
+    padding-left: 0px;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    list-style-type: none;
+    list-style-position: inside;
+}
+
+#advertise li {
+    border: 1px solid; 
+    border-color: peru;
+    border-radius: 8px;
+    box-shadow: 2px 2px peru;
+    height: 80px;
+    margin-right: 40px;
+    margin-top: 10px;
+    padding-top: 10px;
+    /*padding-left: 10px; */
+}
+
+#advertise ul li:first-child {
+    /*list-style-image:url(../pictures/picture1.png); */
+    background-image: url("./pics/home.jpg"); 
+    background-repeat: no-repeat;
+    background-size: 30% 100%;
+    grid-column-start: 1;
+}
+
+#advertise ul li:nth-child(2) {
+    background-image: url("./pics/home.jpg");   /* TODO - some other picture */
+    background-repeat: no-repeat;
+    background-size: 30% 100%;
+    /*grid-column-start: 2;*/
+
+}
+#advertise ul li:nth-child(3) {
+    background-image: url("./pics/home.jpg"); 
+    background-repeat: no-repeat;
+    background-size: 30% 100%;
+    /*grid-column-start: 3;*/
+
+}
+
+#advertise a {
+    text-decoration: none;
+    /* padding:6px 12px; */
+    font-size: 1.5em;
+    color: black;
+    margin-left: 33%;
+    /*background-color: rosybrown; */
+}
+
+
+
+/*
+.signup-form .row div:first-child{
+    padding-right: 10px;
+}
+.signup-form .row div:last-child{
+    padding-right: 10px;
+}
+*/
+
+@media only screen and (max-width: 650px) {
+    .container ul {
+        grid-template-columns: repeat(4, 20%);
+        grid-template-rows: auto auto;
+    }
+    .container li {
+        padding: 6px;
+    }
+    .container li:first-child {
+        grid-column-start: 3;
+    }
+    .container li:nth-child(3) {
+        grid-column-start: 3;
+        grid-row-start: 2;
+    }
+    .container li:nth-child(4) {
+        grid-column-start: 4;
+        grid-row-start: 2;
+    }
+    .signup-form {
+        padding: 6px;
+        height: 60vh;
+        /*background-color: limegreen; */
+    }
+
+    .signup-form form {
+        width: 90vw;
+        min-width:  200px;
+        /*min-height: 80px; */
+        background-color: linen;
+        /*height: 60vh; */
+    }
+    .container {
+        background-image: none;
+        height: 100vh;
+    }
+    header {
+        background-image: url("../pictures/picture1.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 40vh;
+        width: 100vw;
+    }
+    #advertise ul {
+        grid-template-columns: auto;
+    }
+}
+
+
+
+
+
+
+
+
