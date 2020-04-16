@@ -1,0 +1,28 @@
+html, body{
+    background-image: url(./pic/background2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0px;
+    width: 100vw;
+    height: 100vh;
+}
+
+h1{
+    font-family: cursive;
+    margin-left: 30px;
+
+ 
+}
+img{
+    
+    height:100px;
+    width:100px;
+    position: relative;
+}
+div{
+    position: relative;
+    transition: all 200ms;
+    left:0px;
+    top:0px;
+    opacity: 0.7;
+}
