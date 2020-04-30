@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My JS Exercise</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<style>
+    
+</style>
+
+<body>
+    <header>
+        
+
+    <script>
+
+    'use strict'
+
+    // BASIC exercises
+
+    //18. Write a JavaScript program (function) to check two given numbers and return true if one of the number is 50 or if their sum is 50
+     function twoNums(a, b){
+         if (a + b === 50 || a === 50 || b === 50){
+             return true
+         } else { return false }
+     }
+
+     let w = twoNums(50, 10);
+     console.log(w);
+
+
+    //25. Write a JavaScript program to check whether a given positive number is a multiple of 3 or a multiple of 7.
+     function threeOrSeven(num){
+            if (num % 3 == 0 && num % 7 == 0){
+                return "multiple of 3 and multiple of 7"
+            } else if (num % 3 == 0 ){
+             return "multiple of 3"
+            } else if ( num % 7 == 0){
+             return "multiple of 7"
+            } else { return "not a multiple of 3 neither a multiple of 7"}
+        }
+
+        let q = threeOrSeven(20);
+        console.log(q);
+
+    //32. Write a JavaScript program to find a value which is nearest to 100 from two different given integer values.
+
+     function oneHundred (x, y) {
+
+        let t = 0;
+        let r = 0;
+
+         if (x >= 100){
+             t = x - 100
+             
+         } else {
+             t = 100 - x
+             
+            }
+
+        if (y >= 100){
+             r = y - 100
+             
+        }else {
+             r = 100 - y
+            
+        }
+
+        if (t < r){
+            return x
+        } else { return y}
+    }
+ 
+    let u = oneHundred(190, 80);
+    console.log(u);
+
+    //36. Write a JavaScript program to check whether the last digit of the three given positive integers is same.
+   
+
+    function sameDigit (l,m,n) {
+        let lastDigL = l % 10;
+        let lastDigM = m % 10;
+        let lastDigN = n % 10;
+
+        if (lastDigL === lastDigN && lastDigN === lastDigM) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    let k = sameDigit(0,78,84);
+    console.log(k);
+
+
+    //46. Write a JavaScript program to check two given non-negative integers that whether one of the number (not both) is multiple of 7 or 11.
+    function func (j, p){
+        if ((j % 7 === 0 || j % 11 === 0) && (p % 7 !== 0 && p % 11 !== 0)){  // !0  // !true == false
+            return true
+        } else if ((p % 7 === 0 || p % 11 === 0) && (j % 7 !== 0 && j % 11 !== 0)){
+            return true
+        }else {return false}
+
+    }
+
+    let v = func (4,54)
+    console.log(v)
+
+
+   // 55. Write a JavaScript program to check whether a given string contains equal number of p's and t's. 
+   
+
+   function string (str){
+    let p = 0;
+    let t = 0;
+       for(let i = 0; i < str.length; i++ ){
+           if(str[i] === 'p'){ p++}
+           else if(str[i] === 't'){ t++}
+       }
+           if (t === p){
+           return true
+        } else {
+            return false
+        }
+
+    }
+
+   let st = string('super true')
+   console.log(st);
+
+  
+   
+
+    // 4. Write a JavaScript program to find the area of a triangle where lengths of the three of its sides are 5, 6, 7. 
+ function triangle (d, e, f){
+     let g = (d + e + f) / 2
+     let area = Math.sqrt(g * (g-d)*(g-e)*(g-f))
+     return area
+ }
+
+  let tri = triangle(5, 6, 7)
+  console.log(tri)
+
+    //59. Write a JavaScript program to extract the first half of a string of even length.
+function halfStr(hStr){
+       let middle = (hStr.length)/ 2
+       console.log(middle)
+       let x = hStr.slice(0, middle)
+       return x;
+}
+
+ let myString = halfStr('javascript')
+ console.log(myString);
+    
+   
+//22. Write a JavaScript program to remove a character at the specified position of a given string and return the new string.
+function remChar(stng, pos){
+        let d1 = stng.slice(0,pos)  // 0,1,... pos-1
+        let d2 = stng.slice(pos+1,stng.length)  // pos+1, pos+2,... , stng.length-1 
+    
+        return d1+d2
+    }
+
+    let myNewString = remChar('imagination', 5)
+    
+    console.log(myNewString)
+
+    //23. Write a JavaScript program to create a new string from a given string changing the position of first and last characters. 
+    //The string length must be greater than or equal to 1
+    function firstLast (str) {
+        let first = str[0]
+        let last = str[str.length-1]
+        //console.log(str.length-1)
+        //console.log(str[str.length-1])
+        let middle = str.slice(1,str.length-1)
+        //console.log(middle)
+        return last+middle+first
+    }
+
+    let kk = firstLast('abcde')
+    console.log(kk)
+
+
+    //76. Write a JavaScript program to create a new array taking the first and last elements from a given array of integers 
+    //and length must be greater or equal to 1
+
+    function arrFisrtLast (arr) {
+        let last = arr.pop();
+        console.log(last)
+        let first = arr.shift();
+        console.log(first)
+        let newArr = [first,last]
+        return newArr
+    }
+
+    let myArr = arrFisrtLast([3,4,5,7,88]);
+    console.log(myArr)
+
+
+    /*
+    function arrFirstLast (arr) {
+        let newArr = [arr[0], arr[arr.length-1]]
+        return newArr
+    }
+
+    let y = arrFirstLast([3,4,5,6,7])
+    //console.log(y)
+    */
+
+
+    //85. Write a JavaScript code to divide a given array of positive integers into two parts. 
+    //First element goes to first part, second element goes to second part, and third element goes to first part and so on. 
+    //Now compute the sum of two parts and store into an array of size two.
+
+    function sumArr (arr) {
+        let sum = 0;
+        for(let i=0; i<arr.length; i++) {
+            sum = sum + arr[i]
+        }
+        return sum
+    }
+
+
+    function sumArrTwo (numArr) {
+
+        let partOne = [];
+        let partTwo = [];
+    
+        for(let i = 0; i<numArr.length; i++) {
+            if (i % 2 === 0) {
+                partOne.push(numArr[i])
+            } else {
+                partTwo.push(numArr[i])
+            }
+        }
+        console.log(partOne)
+        console.log(partTwo)
+
+        let partOneSum = sumArr(partOne)
+        let partTwoSum = sumArr(partTwo)
+
+        let resArr = [];
+        resArr.push(partOneSum)
+        resArr.push(partTwoSum)
+
+        // let resArr = [partOneSum, partTwoSum]
+
+        return resArr
+    }
+
+    let res = sumArrTwo([1,0,1,0,1,0])
+    console.log(res)
+
+
+
+
+    //126. Write a JavaScript program to get the largest even number from an array of integers
+    function largestEven (arr) {
+        let largestEvenNum = 0;
+        for(let i=0;i<arr.length; i++) {
+            if (arr[i] %2 === 0) { 
+                if (arr[i] > largestEvenNum) {
+                    largestEvenNum = arr[i]
+                }
+            }
+        }
+        return largestEvenNum
+    }
+
+    let largest = largestEven([1,2,5,88,63,94,32])
+    //console.log(largest)
+
+
+    // MORE FUNCTIONS
+    
+    // 22. Write a JavaScript function that accepts two arguments, a string and a letter
+    //     and the function will count the number of occurrences of the specified letter within the string.
+    // Sample arguments : 'w3resource.com', 'o'
+    // Expected output : 2
+ function numOfOccu(str2, letter){
+     let array = str2.split("")
+     console.log(array)
+     
+     let letterCount = 0
+     for (let i = 0; i < array.length; i++){
+         if (array[i] === letter){
+             letterCount ++
+            }
+    }
+     return letterCount
+ }
+
+let occurrences = numOfOccu("hello world", "o");
+console.log(occurrences)
+
+    // 6. Write a JavaScript function that accepts a string as a parameter and find the longest word within the string
+    // Example string : 'Web Development Tutorial'
+    // Expected Output : 'Development'
+    
+
+    function longWord (str) {
+        let arr = str.split(' ');
+        let wordCnt = 0;
+        let longWord = '';
+
+        for (let i=0; i<arr.length; i++) {
+            //console.log(arr[i])
+            if (wordCnt < arr[i].length) {      // arr[i] is a string (one of the words from the original string str)
+                wordCnt = arr[i].length
+                longWord = arr[i]
+            }
+        }
+
+        return longWord
+    }
+
+    let long = longWord('Web Development Tutorial')
+    console.log(long)
+
+
+    // 8. Write a JavaScript function that accepts a number as a parameter and check the number is prime or not
+    // Note : A prime number (or a prime) is a natural number greater than 1 that has no positive divisors other than 1 and itself.
+
+    function prime (n) {
+        for (let i=2; i<n; i++) {  // 2,3,4,5,6,7,8 (n==9)
+            if (n % i === 0) {   // n divisible by i --> n is not prime
+                return false  // not prime
+            }
+        } return true  // prime
+    }
+
+    let p = prime(53)
+    console.log(p)
+
+    // 2. Write a JavaScript function that checks whether a passed string is palindrome or not? 
+    // A palindrome is word, phrase, or sequence that reads the same backward as forward, e.g., 'madam' or 'nurses run'.
+ function palindrome(oneString){
+     let newArr = oneString.split("")
+     let newArrTwo = oneString.split("")
+     
+     newArrTwo.reverse();
+
+     console.log(newArr)
+     console.log(newArrTwo);
+
+     for (let i = 0; i < newArr.length; i++){
+    
+    
+     if (newArr[i] !== newArrTwo[i]){
+         return false
+     } 
+
+    }
+
+    return true
+ }
+
+let paliResult = palindrome("level");
+console.log(paliResult);
+
+    // 14. Write a JavaScript function to convert an amount to coins
+    // Sample function : amountTocoins(46, [25, 10, 5, 2, 1])
+    // Here 46 is the amount. and 25, 10, 5, 2, 1 are coins.
+
+    function amountTocoins (amount, coins) {  // amount - number; coins - array of numbers by descending order; should contain 1 as a last element
+        let nextCoin = 0;
+        let leftOver = amount;
+        let collectedCoins = [];
+
+        while (leftOver > 0) {        // "while" loop
+            if (leftOver >= coins[nextCoin]) {
+                leftOver = leftOver - coins[nextCoin]
+                collectedCoins.push(coins[nextCoin])
+            } else {
+                nextCoin++
+            }
+        }
+
+        return collectedCoins
+    }
+
+
+    // 7. Write a JavaScript function that accepts a string as a parameter and counts the number of vowels within the string
+    // Note : As the letter 'y' can be regarded as both a vowel and a consonant, we do not count 'y' as vowel here.
+    // Example string : 'The quick brown fox'
+    // Expected Output : 5
+
+    
+    let vowels = 'aeiouAEIOU'
+
+    function vowelsNum(str) {
+        let num = 0;
+
+        for (let i=0; i<str.length; i++) {
+            if(vowels.indexOf(str[i]) !== -1) {
+                num++
+            }
+        }
+
+        return num
+    }
+
+    let w = vowelsNum('parameter');
+    console.log(w)
+
+
+    // 5. Write a JavaScript function that accepts a string as a parameter and converts the first letter of each word of the string in upper case
+    // Example string : 'the quick brown fox'
+    // Expected Output : 'The Quick Brown Fox '
+   
+    function upperLetter (str) {
+        let arr = str.split(' ');   // arr = ['the', 'quick', 'brown', 'fox']
+        let arrRes = [];            // arrRes = ['The', 'Quick', 'Brown', 'Fox']
+        let first, rest;
+       
+        for (let i=0; i<arr.length; i++) {
+            first = arr[i][0].toUpperCase()  // arr[0] = 'the'  // arr[0][0] = 't'  // first = 'T'
+            rest = arr[i].slice(1, arr[i].length)  
+            arrRes[i] = first + rest  // 'The' = arrRes[0] / i==0
+            //console.log(arrRes[i])
+        }
+
+        let outStr = arrRes.join(' ');  
+        return outStr;
+    }
+
+    let upper = upperLetter('the quick brown fox')
+    console.log(upper)
+    
+
+
+
+    </script>
+
+</body>
+</html>
+
+
