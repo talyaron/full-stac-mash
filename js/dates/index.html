@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type='date' />
+    Today is <span id='today'></span>
+    <script>
+        //get the date
+        let date = new Date(1979, 4, 12, 12,0,23);
+
+        console.log(date)
+        document.getElementById('today').innerText = date;
+
+        // 1) write to the DOM the time in HH:MM:SS format
+        //18:32:26 of the current time
+        //(it should be a function)
+
+        //2) the user will enter a time (through a form (pick date))
+        // and the function will return  to the DOM in YYYY/MM/DD
+    </script>
+</body>
+
+</html>
