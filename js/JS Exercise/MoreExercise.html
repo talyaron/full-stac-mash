@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>More JS Exercise</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <script>
+
+// DATE -----------------
+
+    //1. Write a JavaScript function to check whether an `input` is a date object or not.  
+    //Test Data :
+    //console.log(is_date("October 13, 2014 11:13:00"));
+    //console.log(is_date(new Date(86400000)));
+    //console.log(is_date(new Date(99,5,24,11,33,30,0)));
+    //console.log(is_date([1, 2, 4, 0]));
+    //Output :
+    //false
+    //true
+    //true
+    //false
+    
+    function is_date (inp) {
+        if (typeof inp === 'object') {
+            if (inp.constructor.name === 'Date') {
+                return true
+            } else {
+                return false
+            }
+        } else {
+            return false
+        }
+    }
+
+    //console.log(is_date("October 13, 2014 11:13:00"));
+    //console.log(is_date(new Date(86400000)));
+    //console.log(is_date(new Date(99,5,24,11,33,30,0)));
+    //console.log(is_date([1, 2, 4, 0]));
+
+
+    //5. Write a JavaScript function to compare dates (i.e. greater than, less than or equal to).  
+    //Test Data :
+    //console.log(compare_dates(new Date('11/14/2013 00:00'), new Date('11/14/2013 00:00')));
+    //console.log(compare_dates(new Date('11/14/2013 00:01'), new Date('11/14/2013 00:00')));
+    //console.log(compare_dates(new Date('11/14/2013 00:00'), new Date('11/14/2013 00:01')));
+    //Output :
+    //"Date1 = Date2"
+    //"Date1 > Date2"
+    //"Date2 > Date1"
+    
+    function compare_dates (date1, date2) {
+        if (date1 > date2) {                   // date1 === date2 does not work / compares by reference?
+            return "Date1 > Date2"
+        } else if (date1 < date2) {   
+            return "Date1 < Date2"
+        } else {
+            return "Date1 == Date2"
+        }
+    }
+
+    let s = compare_dates(new Date('11/14/2013 00:00'), new Date('11/14/2013 00:00'))
+    console.log(s)
+    console.log(compare_dates(new Date('11/14/2013 00:01'), new Date('11/14/2013 00:00')));
+    console.log(compare_dates(new Date('11/14/2013 00:00'), new Date('11/14/2013 00:01')));
+
+
+    //7. Write a JavaScript function to test whether a date is a weekend. 
+    // Note : Use standard Saturday/Sunday definition of a weekend.
+    //Test Data :
+    //console.log(is_weekend('Nov 15, 2014'));
+    //console.log(is_weekend('Nov 16, 2014'));
+    //console.log(is_weekend('Nov 17, 2014'));
+    //Output :
+    //"weekend"
+    //"weekend"
+    //"not weekend"
+    function is_weekend (date) {
+        let dateObj = new Date(date)
+        if (dateObj.getDay() === 0 || dateObj.getDay() === 6) {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    console.log(is_weekend('Nov 15, 2014'));
+    co/nsole.log(is_weekend('Nov 16, 2014'));
+    console.log(is_weekend('Nov 17, 2014'));
+    console.log(is_weekend('May 2, 2020'));
+    console.log(is_weekend('May 4, 2020'));
+    console.log(is_weekend('Nov 24, 1990'));
+
+
+// OBJECTS -----------------------
+
+    //15. Write a JavaScript function to convert an object into a list of `[key, value]` pairs.
+    function objToList(obj) {
+        let arr = [];
+        Object.keys(obj).forEach(item => {
+            //console.log(item, obj[item]);
+            arr.push(`${item} : ${obj[item]}`)
+        })
+
+        return arr
+    }
+
+    const student1 = {
+        name: "David Rayy",
+        sclass: "VI",
+        rollno: 12
+    };
+    let myList = objToList(student1);
+    console.log(myList)
+
+
+
+
+    //5. Write a JavaScript program to get the volume of a Cylinder with four decimal places using object classes.  
+    //Volume of a cylinder : V = πr2h
+    //where r is the radius and h is the height of the cylinder.
+    function Cylinder(cyl_height, cyl_diameter) {
+        this.cyl_height = cyl_height;
+        this.cyl_diameter = cyl_diameter;
+    }
+
+    Cylinder.prototype.Volume = function () {
+        //cyl_diameter
+        //cyl_height
+        let r = this.cyl_diameter / 2;
+        let volume = r*r*this.cyl_height*Math.PI 
+        return volume
+    };
+
+    var cyl = new Cylinder(7, 4);
+    // Volume of the cylinder with four decimal places.
+    console.log(cyl)
+    console.log('volume =', cyl.Volume().toFixed(4));
+
+
+
+    // Type pf object geneated from function
+    //console.log(typeof cyl)  // Object
+    //console.log(cyl.constructor.name)  // Cylinder
+    //console.log(cyl.constructor)  // function Cylinder(cyl_height, cyl_diameter) {...} is a constructor
+
+    // type of object generated from class
+    class Car {
+        constructor(brand) {
+            this.carname = brand;
+        }
+    }
+
+    let myCar = new Car('Toyota');
+
+    console.log(typeof myCar)  // Object
+    console.log(myCar.constructor.name)  // Car
+    console.dir(myCar.constructor)
+
+
+
+
+
+    </script>
+    
+</body>
+</html>

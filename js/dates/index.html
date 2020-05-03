@@ -6,21 +6,48 @@
     <title>Document</title>
 </head>
 <body>
-    <input type='date' />
+    <input id = 'date' type='date'/> <button onClick = "myFunction()" type = submit id = btnSubmit> Submit</button> 
+    <br> <br>
     Today is <span id='today'></span>
+    <br> <br>
+    The current time is <span id='time'></span>
+    <br> <br> 
+    <div >
+        The users picked the following date: &nbsp; <span id = 'inputDate'></span>
+
+
+    </div> 
+
     <script>
         //get the date
         let date = new Date(1979, 4, 12, 12,0,23);
 
         console.log(date)
         document.getElementById('today').innerText = date;
+        
 
         // 1) write to the DOM the time in HH:MM:SS format
         //18:32:26 of the current time
         //(it should be a function)
 
+        function functionOne(){
+        let date1 = new Date()
+        let currentHour = date1.getHours()
+        let currentMinutes = date1.getMinutes()
+        let currentSeconds = date1.getSeconds()
+
+        document.getElementById('time').innerText = `${currentHour} ${currentMinutes} ${currentSeconds}`
+        }
+
+        functionOne()
+        
         //2) the user will enter a time (through a form (pick date))
         // and the function will return  to the DOM in YYYY/MM/DD
+
+        function myFunction(){
+           let inputDate = document.getElementById('date').value
+           document.getElementById('inputDate').innerText = inputDate  // YYYY-MM-DD
+        }
     </script>
 </body>
 
