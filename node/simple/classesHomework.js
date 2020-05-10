@@ -11,29 +11,30 @@ class Flower{
     this.isCultured = isCultured;
     }
     growFlower() {
-        let finalGrowth = this.height * 1.5
-        return finalGrowth
+        // let finalGrowth = this.height * 1.5
+        // return finalGrowth
+        this.height = this.height*1.5;
     }
     
 }
 
 let rose = new Flower ("Rose", "sweet", "red", 50, true);
 
-let maxHeight = rose.growFlower();
+let maxHeight = rose.height;
 
 
-console.log(rose);
+// console.log(rose);
 
-console.log(`Maximum Rose growth is ${maxHeight}cm`);
+// console.log(`Maximum Rose growth is ${maxHeight}cm`);
 
 let sunflower = new Flower ("Sunflower", "sour", "yellow", 70, true);
 
 let maxHeight2 = sunflower.growFlower();
 
 
-console.log(sunflower);
+// console.log(sunflower);
 
-console.log(`Maximum Sunflower growth is ${maxHeight2}cm`);
+// console.log(`Maximum Sunflower growth is ${maxHeight2}cm`);
 
 //2) create a class of Cars, with (name, brand, maximum speed, price), 
 //with methods accelrate, stop (which will return final speed)
@@ -46,7 +47,7 @@ class Car{
     this.price = price;
     }
     accelerate(){
-        let max = this.maximumSpeed * 1
+        let max = this.maximumSpeed * 1;
         return max;
     }
 
@@ -57,23 +58,23 @@ class Car{
 }
 
 let myCar = new Car("Toyota", "Corolla", 240, 25000);
-console.log(myCar);
+// console.log(myCar);
 
 let maxSpeed = myCar.accelerate();
-console.log(`Maximum speed for Toyota Corolla is ${maxSpeed}`);
+// console.log(`Maximum speed for Toyota Corolla is ${maxSpeed}`);
 
 let minSpeed = myCar.stop();
-console.log(`Minimum speed for Toyota Corolla is ${minSpeed}`);
+// console.log(`Minimum speed for Toyota Corolla is ${minSpeed}`);
 
 
 let yourCar = new Car("Honda", "Accord", 260, 27000);
-console.log(yourCar);
+// console.log(yourCar);
 
 let maxSpeed2 = yourCar.accelerate();
-console.log(`Maximum speed for Honda Accord is ${maxSpeed2}`);
+// console.log(`Maximum speed for Honda Accord is ${maxSpeed2}`);
 
 let minSpeed2 = yourCar.stop();
-console.log(`Minimum speed for Honda Accord is ${minSpeed2}`);
+// console.log(`Minimum speed for Honda Accord is ${minSpeed2}`);
 
 //3) create Class students, with name, suraname, avg-grade, with methods
 // of adding an a grade (gerade and course), method to calculate avarage 
@@ -85,24 +86,42 @@ class Student{
         this.firstName = firstName;
         this.lastName = lastName;
         this.averageGrade = averageGrade;
-        this.grades = grades;
+        this.grades = [];
     }
-    addGrade(){
-
+    addGrade(grade){
+        this.grades.push(grade);
+        console.log(this.grades)
     }
     calcAvgGrade(){
 
+        //add all grades and divide by n (num ber of grades)
+        let sumOfGrades = 0 , n = 0;
+        this.grades.forEach(grade=>{
+            sumOfGrades += grade;
+            n++
+        })
+
+        return sumOfGrades/n
     }
 }
 
 let studentOne = new Student("John", "Smith", 90);
 console.log(studentOne);
 
-let studentTwo = new Student("Lauren", "Mead", 85);
-console.log(studentTwo);
+studentOne.addGrade(92);
+studentOne.addGrade(91);
+studentOne.addGrade(78);
+studentOne.addGrade(98);
 
-let studentThree = new Student("Jennifer", "Colton", 80);
-console.log(studentThree);
 
-let studentFour = new Student ("Andrew", "Johnson", 95);
-console.log(studentFour);
+console.log(studentOne.calcAvgGrade())
+
+
+// let studentTwo = new Student("Lauren", "Mead", 85);
+// console.log(studentTwo);
+
+// let studentThree = new Student("Jennifer", "Colton", 80);
+// console.log(studentThree);
+
+// let studentFour = new Student ("Andrew", "Johnson", 95);
+// console.log(studentFour);
