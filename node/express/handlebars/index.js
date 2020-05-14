@@ -7,6 +7,8 @@ app.use(express.static('public'))
 //mock data
 const people = ['Lidia', 'Philip', 'Masha']
 
+const pictures = [{img:'flower1.jpg', name:'Flower 1', show:true}, {img:'flower2.jpeg', name:'Flower 2', show:false}]
+
 const path = require('path');
 
 app.set('views', path.join(__dirname, 'views'));
@@ -20,6 +22,10 @@ app.get('/', (req, res) => {
 app.get('/about', (req, res) => {
     
     res.render('about', { user: 'Tal', famelyName: 'Yaron', people: people })
+})
+
+app.get('/pictures',(req, res)=>{
+    res.render('pictures',{pictures:pictures})
 })
 
 let port = process.env.PORT || 3002;
