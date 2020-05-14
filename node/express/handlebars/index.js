@@ -5,7 +5,7 @@ const exphbs = require('express-handlebars');
 app.use(express.static('public'))
 
 //mock data
-const people = ['Ben', 'Josef', 'Rebeka']
+const people = ['Lidia', 'Philip', 'Masha']
 
 const path = require('path');
 
