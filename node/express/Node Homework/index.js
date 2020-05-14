@@ -7,6 +7,8 @@ const port = 3004;
 app.listen(port, () =>{
     console.log(`server listen on port ${port}`)
 });
+
+app.use(express.static('images'))
 /*
 1) write a server that the user enter a food in the URL and the server 
 respond with the calories
@@ -14,17 +16,19 @@ respond with the calories
 */
 
 
-const foods = [{food: "avocado", calories: "120", img:"./images/avocado.jpg"},{food: "pinapple", calories: "200", img:"./images/pinapple.jpg"}]
+const foods = [{food: "avocado", calories: "120", img:"/avocado.jpg"},{food: "pinapple", calories: "200", img:"/pinapple.jpg"}]
 
-app.get('/:food', (req, res)=>{
+app.get('/foods/:food', (req, res)=>{
     const { food } = req.params;
     let calories = false;
     let image = false;
 
+
+    // searching for the specific food
     for(let i in foods){
         if (foods[i].food === food){
             calories = foods[i].calories;
-            image = foods[i].pic;
+            image = foods[i].img;
             break
         }
     }
@@ -33,7 +37,8 @@ app.get('/:food', (req, res)=>{
         res.send(`Sorry no calories found for ${food}`)
     
     } else{
-        res.send(`<h3>${food} has ${calories} calories!<h3><img src = ${image}>`)
+        console.log('image:', image)
+        res.send(`<h3>${food} has ${calories} calories!<h3><img src = "../images${image}">`)
     }
 });
 
@@ -49,7 +54,7 @@ const merchandise = [{item: "notebook", price: "3", pic:  "./images/notebook.jpg
                      {item: "color pens", price: "6", pic: "./images/colorPens.jpg"},
                      {item: "stapler", price: "8", pic: "./images/stapler.jpg"}]
 
- app.get('/:item', (req, res)=>{
+ app.get('/store/:item', (req, res)=>{
     const { item } = req.params;
     let price = false;
 
