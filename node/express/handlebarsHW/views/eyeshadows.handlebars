@@ -1,11 +1,11 @@
 <h1>Eyeshadows</h1>
- <div class="wrapper">
+<div class="wrapper">
 
-      
+
     {{#each eyeshadows}}
-         
+    <a href='/product/{{this.productId}}'>
         <div>
-            <img class="moveToHomePicture" src='img/{{this.img}}' alt='some flower'/>
+            <img class="moveToHomePicture" src='img/{{this.img}}' alt='some flower' />
             <div>
                 Product: {{this.Name}}
             </div>
@@ -13,5 +13,6 @@
                 Price: {{this.Price}}
             </div>
         </div>
-         
+    </a>
+
     {{/each}}
