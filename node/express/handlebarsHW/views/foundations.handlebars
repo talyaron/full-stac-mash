@@ -1,0 +1,17 @@
+<h1>Foundations</h1>
+ <div class="wrapper">
+
+      
+    {{#each foundations}}
+         
+        <div>
+            <img class="moveToHomePicture" src='img/{{this.img}}' alt='some flower'/>
+            <div>
+                Product: {{this.Name}}
+            </div>
+            <div>
+                Price: {{this.Price}}
+            </div>
+        </div>
+         
+    {{/each}}

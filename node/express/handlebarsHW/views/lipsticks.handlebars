@@ -1,0 +1,18 @@
+<h1>Lipsticks</h1>
+ <div class="wrapper">
+
+      
+    {{#each lipsticks}}
+         
+        <div>
+            <img class="moveToHomePicture" src='img/{{this.img}}' alt='some flower'/>
+            <div>
+                Product: {{this.Name}}
+            </div>
+            <div>
+                Price: {{this.Price}}
+            </div>
+            
+        </div>
+         
+    {{/each}}
