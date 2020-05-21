@@ -25,7 +25,7 @@ function getLipsticks() {
 
             let productsSTR = '';
             res2.forEach(product => {
-                productsSTR += `<p>Type: ${product.type} ProductId: ${product.productId} Name: ${product.name} Price: ${product.price}$ <img src="img/${product.img}" alt="some lipstick" > </p>`
+                productsSTR += `<p>Type: ${product.type} ProductId: ${product.productId} Name: ${product.name} <span onclick='updatePrice("${product.productId}")'>Price: ${product.price}$</span> <img src="img/${product.img}" alt="some lipstick" > </p>`
             })
 
             document.getElementById('lipsticks').innerHTML = productsSTR;
@@ -46,20 +46,21 @@ function getAllFoundation() {
             document.getElementById('foundations').innerHTML = productsSTR1;
         });
 }
+function getEyeShadows() {
+    fetch('/api/get-eyeshadows')
+        .then(responce2 => responce2.json())
+        .then(res4 => {
 
-fetch('/api/get-eyeshadows')
-    .then(responce2 => responce2.json())
-    .then(res4 => {
+            console.log(res4)
 
-        console.log(res4)
+            let productsSTR2 = '';
+            res4.forEach(product => {
+                productsSTR2 += `<p>Type: ${product.type} ProductId: ${product.productId} Name: ${product.name} Price: ${product.price}$ <img src="img/${product.img}" alt="some lipstick" > </p>`
+            })
 
-        let productsSTR2 = '';
-        res4.forEach(product => {
-            productsSTR2 += `<p>Type: ${product.type} ProductId: ${product.productId} Name: ${product.name} Price: ${product.price}$ <img src="img/${product.img}" alt="some lipstick" > </p>`
-        })
-
-        document.getElementById('eyeshadows').innerHTML = productsSTR2;
-    });
+            document.getElementById('eyeshadows').innerHTML = productsSTR2;
+        });
+}
 
 function addProduct(e) {
     e.preventDefault();
@@ -93,5 +94,32 @@ function addProduct(e) {
             })
 
             document.getElementById('products').innerHTML = producrtsSTR;
+        });
+}
+
+function updatePrice(productId) {
+    console.log('update price', productId)
+    let price = prompt("What is the new price?");
+    console.log(price);
+
+    fetch('/api/update-product', {
+        method: 'PUT',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ productId, newPrice:price })
+    })
+        .then(responce => responce.json())
+        .then(products => {
+
+            console.log(products)
+            let productsSTR = '';
+            products.forEach(product => {
+                productsSTR += `<p>Type: ${product.type} ProductId: ${product.productId} Name: ${product.name} <span onclick='updatePrice("${product.productId}")'>Price: ${product.price}$</span> <img src="img/${product.img}" alt="some lipstick" > </p>`
+            })
+
+            document.getElementById('lipsticks').innerHTML = productsSTR;
+           
         });
 }
