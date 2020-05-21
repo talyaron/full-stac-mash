@@ -1,0 +1,52 @@
+html{
+    background-color: rgb(235, 209, 235);
+}
+header {
+    margin-top: 20px;
+    color: crimson;
+    text-align: center;
+}
+a{
+    text-decoration: none;
+    padding:10px;
+    margin:10px;
+    border:double 1px midnightblue;
+    border-radius: 15px;
+
+}
+a:hover {
+    background-color: rgb(249, 121, 253);
+  }
+h1{
+    text-align: center;
+}
+
+h2{
+    color: rgb(122, 40, 67);
+    text-align: center;
+}
+.wrapper{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    gap:10px
+}
+img{
+    width:250px;
+    height:250px;
+    border: dotted 1px grey;
+    display: inline-grid;
+}
+footer{
+    
+    color: lightslategray;
+    position: relative;
+    left:550px;
+    top: 150px;
+}
+p{
+    text-align: center;
+}
+form{
+    text-align: center;
+}
