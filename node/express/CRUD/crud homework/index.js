@@ -43,7 +43,7 @@ app.post('/api/add-product', (req, res) => {
 });
 
 //update product
-app.put('/api/update-product', (req, res) => {
+app.put('/api/update-price', (req, res) => {
     console.log(req.body)
 
     const {productId, newPrice} = req.body;
@@ -61,7 +61,88 @@ app.put('/api/update-product', (req, res) => {
     products[index].price = newPrice
 
     //sresponce with the new list of products
-    res.send(products)
+    //res.send(products)
+    let lipsticks = products.filter(product => product.type == 'lipsticks')
+    res.send(lipsticks);
+})
+
+///////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
+
+app.put('/api/update-name', (req, res) => {
+    console.log(req.body)
+
+    const {productId, newName} = req.body;
+    console.log(productId);
+    console.log(newName)
+
+    //go to the products
+    let index = products.findIndex(product=>product.productId == productId)
+    //find the product
+
+    console.log('index', index)
+
+
+    // change the price
+    products[index].name = newName
+
+    //responce with the new list of products
+    //res.send(products)
+    let foundations = products.filter(product => product.type == 'foundations')
+    res.send(foundations);
+})
+
+/////////////////////////////////////////////////////////////////////////
+
+app.put('/api/update-type', (req, res) => {
+    console.log(req.body)
+
+    const {productId, newType} = req.body;
+    console.log(productId);
+    console.log(newType)
+
+    //go to the products
+    let index = products.findIndex(product=>product.productId == productId)
+    //find the product
+
+    console.log('index', index)
+
+
+    // change the type
+    products[index].type = newType
+
+    //responce with the new list of products
+    //res.send(products)
+    let eyeshadows = products.filter(product => product.type == 'eyeshadows')
+    res.send(eyeshadows)
+})
+
+
+////////////////////////////////////////////////
+
+app.put('/api/update-all', (req, res) => {    // PUT 
+    console.log(req.body)
+
+    const {productId, type, newType, newName, newPrice} = req.body;   // type - old type (type of the page)
+    console.log(productId);
+    console.log(newPrice)
+
+    //go to the products
+    let index = products.findIndex(product=>product.productId == productId)
+    //find the product
+
+    console.log('index', index)
+
+    // change the price
+    products[index].name = newName
+    products[index].type = newType
+    products[index].price = newPrice
+
+    //sresponce with the new list of products
+    //res.send(products)
+    let typeProducts = products.filter(product => product.type == type)  // old type
+    //console.log(typeProducts)
+    res.send(typeProducts)
 })
 
 
