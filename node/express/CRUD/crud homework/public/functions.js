@@ -8,7 +8,7 @@ function getAllProducts() {
 
             let productsSTR = '';
             res2.forEach(product => {
-                productsSTR += `<p>Type: ${product.type} ProductId: ${product.productId} Name: ${product.name} Price: ${product.price}$ <img src="img/${product.img}" alt="some lipstick" > </p>`
+                productsSTR += `<p>Type: ${product.type} ProductId: ${product.productId} Name: ${product.name} Price: ${product.price}$ <img src="img/${product.img}" alt="some lipstick" > </p><button onclick="deleteProduct('${product.productId}')">DELETE</button>`
             })
 
             document.getElementById('products').innerHTML = productsSTR;
@@ -19,56 +19,34 @@ function getLipsticks() {
 
     fetch('/api/get-lipsticks')
         .then(responce => responce.json())
-        .then(res2 => {
+        .then(products => {
 
-            console.log(res2)
+            console.log(products)
 
-            let productsSTR = '';
-            res2.forEach(product => {
-                productsSTR += `<p>Type: ${product.type}  <span onclick='updateAll("${product.productId}", "${product.type}")'> ProductId: ${product.productId} </span>
-                 Name: ${product.name} <span onclick='updatePrice("${product.productId}")'>Price: ${product.price}$</span> <img src="img/${product.img}" alt="some lipstick" > </p>`
-            })
-
-            document.getElementById('lipsticks').innerHTML = productsSTR;
+            createProductsDOM(products, 'lipsticks')
         });
 }
 
 function getAllFoundation() {
     fetch('/api/get-foundations')
         .then(responce1 => responce1.json())
-        .then(res3 => {
+        .then(products => {
 
-            console.log(res3)
-
-            let productsSTR1 = '';
-            res3.forEach(product => {
-                //productsSTR1 += `<p>Type: ${product.type} ProductId: ${product.productId} Name: ${product.name} Price: ${product.price}$ <img src="img/${product.img}" alt="some lipstick" > </p>`
-                productsSTR1 += `<p>Type: ${product.type}  <span onclick='updateAll("${product.productId}", "${product.type}")'> ProductId: ${product.productId} </span> 
-                <span onclick='updateName("${product.productId}")'>Name: ${product.name}</span> 
-                Price: $${product.price} <img src="img/${product.img}" alt="some lipstick" > </p>`
-            })
-
-            document.getElementById('foundations').innerHTML = productsSTR1;
+            console.log(products)
+            createProductsDOM(products, 'foundations')
+           
         });
 }
 function getEyeShadows() {
     fetch('/api/get-eyeshadows')
         .then(responce2 => responce2.json())
-        .then(res4 => {
+        .then(products => {
 
-            console.log(res4)
-
-            let productsSTR2 = '';
-            res4.forEach(product => {
-                productsSTR2 += `<p><span onclick='updateType("${product.productId}")'>Type: ${product.type}</span>
-                <span onclick='updateAll("${product.productId}", "${product.type}")'> ProductId: ${product.productId} </span>
-                Name: ${product.name} Price: $${product.price} <img src="img/${product.img}" alt="some lipstick" > </p>`
-            })
-
-            document.getElementById('eyeshadows').innerHTML = productsSTR2;
+            console.log(products)
+            createProductsDOM(products, 'eyeshadows')
         });
 
-    }
+}
 
 function addProduct(e) {
     e.preventDefault();
@@ -116,7 +94,7 @@ function updatePrice(productId) {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ productId, newPrice:price })
+        body: JSON.stringify({ productId, newPrice: price })
     })
         .then(responce => responce.json())
         .then(products => {
@@ -129,7 +107,7 @@ function updatePrice(productId) {
             })
 
             document.getElementById('lipsticks').innerHTML = productsSTR;
-           
+
         });
 }
 ////////////////////////////////////////////////////////////////////////////////
@@ -137,7 +115,7 @@ function updatePrice(productId) {
 
 function updateName(productId) {
     console.log('update name', productId)
-    let name= prompt("What is the new name?");
+    let name = prompt("What is the new name?");
     console.log(name);
 
     fetch('/api/update-name', {
@@ -146,7 +124,7 @@ function updateName(productId) {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ productId, newName:name })
+        body: JSON.stringify({ productId, newName: name })
     })
         .then(responce => responce.json())
         .then(products => {
@@ -160,7 +138,7 @@ function updateName(productId) {
             })
 
             document.getElementById('foundations').innerHTML = productsSTR;
-           
+
         });
 };
 
@@ -178,7 +156,7 @@ function updateType(productId) {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ productId, newType:type })
+        body: JSON.stringify({ productId, newType: type })
     })
         .then(responce => responce.json())
         .then(products => {
@@ -192,13 +170,13 @@ function updateType(productId) {
             });
 
             document.getElementById('eyeshadows').innerHTML = productsSTR;
-           
+
         });
-}; 
+};
 
 ///////////////////////////////////////////////////////////////
 
-function updateAll(productId, type) {   
+function updateAll(productId, type) {
     let newType = prompt("What is the new type?");
     let newName = prompt("What is the new name?");
     let newPrice = prompt("What is the new price?");
@@ -212,8 +190,8 @@ function updateAll(productId, type) {
         },
         body: JSON.stringify({ productId, type, newType, newName, newPrice })
     })
-    .then(responce => responce.json())
-    .then(products => {
+        .then(responce => responce.json())
+        .then(products => {
 
             console.log(products)
             let productsSTR = '';
@@ -224,7 +202,40 @@ function updateAll(productId, type) {
                                     <span onclick='updatePrice("${product.productId}", "${product.type}")'> Price: ${product.price}$</span> 
                                     <img src="img/${product.img}" alt="some lipstick" > </p>`
             })
-            
+
             document.getElementById(type).innerHTML = productsSTR;
-    });
+        });
+}
+
+
+function deleteProduct(productId, type) {
+    console.log(type)
+    fetch('/api/delete-product', {
+        method: 'DELETE',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ productId, type })
+
+    })
+        .then(responce => responce.json())
+        .then(products => {
+
+            console.log(products)
+
+            createProductsDOM(products,type )
+        })
+
+}
+
+function createProductsDOM(products, type) {
+
+    let productsSTR = '';
+    products.forEach(product => {
+        productsSTR += `<p>Type: ${product.type}  <span onclick='updateAll("${product.productId}", "${product.type}")'> ProductId: ${product.productId} </span>
+         Name: ${product.name} <span onclick='updatePrice("${product.productId}")'>Price: ${product.price}$</span> <img src="img/${product.img}" alt="some lipstick" > </p><button onclick="deleteProduct(${product.productId}, '${product.type}')">DELETE</button>`
+    })
+
+    document.getElementById(`${type}`).innerHTML = productsSTR;
 }

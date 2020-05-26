@@ -46,12 +46,12 @@ app.post('/api/add-product', (req, res) => {
 app.put('/api/update-price', (req, res) => {
     console.log(req.body)
 
-    const {productId, newPrice} = req.body;
+    const { productId, newPrice } = req.body;
     console.log(productId);
     console.log(newPrice)
 
     //go to the products
-    let index = products.findIndex(product=>product.productId == productId)
+    let index = products.findIndex(product => product.productId == productId)
     //find the product
 
     console.log('index', index)
@@ -72,12 +72,12 @@ app.put('/api/update-price', (req, res) => {
 app.put('/api/update-name', (req, res) => {
     console.log(req.body)
 
-    const {productId, newName} = req.body;
+    const { productId, newName } = req.body;
     console.log(productId);
     console.log(newName)
 
     //go to the products
-    let index = products.findIndex(product=>product.productId == productId)
+    let index = products.findIndex(product => product.productId == productId)
     //find the product
 
     console.log('index', index)
@@ -97,12 +97,12 @@ app.put('/api/update-name', (req, res) => {
 app.put('/api/update-type', (req, res) => {
     console.log(req.body)
 
-    const {productId, newType} = req.body;
+    const { productId, newType } = req.body;
     console.log(productId);
     console.log(newType)
 
     //go to the products
-    let index = products.findIndex(product=>product.productId == productId)
+    let index = products.findIndex(product => product.productId == productId)
     //find the product
 
     console.log('index', index)
@@ -123,12 +123,12 @@ app.put('/api/update-type', (req, res) => {
 app.put('/api/update-all', (req, res) => {    // PUT 
     console.log(req.body)
 
-    const {productId, type, newType, newName, newPrice} = req.body;   // type - old type (type of the page)
+    const { productId, type, newType, newName, newPrice } = req.body;   // type - old type (type of the page)
     console.log(productId);
     console.log(newPrice)
 
     //go to the products
-    let index = products.findIndex(product=>product.productId == productId)
+    let index = products.findIndex(product => product.productId == productId)
     //find the product
 
     console.log('index', index)
@@ -142,6 +142,26 @@ app.put('/api/update-all', (req, res) => {    // PUT
     //res.send(products)
     let typeProducts = products.filter(product => product.type == type)  // old type
     //console.log(typeProducts)
+    res.send(typeProducts)
+})
+
+
+app.delete('/api/delete-product', (req, res) => {
+
+    const { productId, type} = req.body;
+
+
+   
+
+    //find the product by ID
+    const index = products.findIndex(product => product.productId == productId);
+    console.log('index:', index);
+    //delete the product from the products
+    products.splice(index, 1);
+
+   
+    let typeProducts = products.filter(product=>product.type == type)
+    //return with new list of products
     res.send(typeProducts)
 })
 
