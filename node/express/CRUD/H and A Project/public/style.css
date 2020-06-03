@@ -1,0 +1,25 @@
+html{
+    background-color: cadetblue;
+}
+
+
+header a{
+    text-decoration: none;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+    background-color: aquamarine;
+    margin-top: 20px;
+}
+
+button{
+    border-radius: 5px;
+    background-color: cornsilk;
+
+}
+
+.submit{
+    border-radius: 5px;
+    background-color: cornsilk;
+
+}
