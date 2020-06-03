@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
 
 
 app.get('/dailymenu', (req, res) => {
-    res.render('dailymenu', { })
+    res.render('dailymenu', {dailyMenu})
 })
 ////////////////////////////////////////////////////////////////////////
 app.put('/api/update-calories', (req, res) => {
