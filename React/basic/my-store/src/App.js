@@ -1,5 +1,4 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import lipstick from './img/lipstick.jpg';
 import foundation from './img/foundation.jpg';
 import eyeshadow from './img/eyeshadow.jpg';
@@ -7,35 +6,59 @@ import eyeliner from './img/eyeliner.jpg';
 import './App.css';
 
 
+let products = [
+  { productType: 'Lipstick', price: 23, img: lipstick, alt: 'lipstick' },
+  { productType: 'Foundation', price: 40, img: foundation, alt: 'foundation' },
+  { productType: 'Eyeshadow', price: 45, img: eyeshadow, alt: 'eyeshadow' },
+  { productType: 'Eyeliner', price: 20, img: eyeliner, alt: 'eyeliner' }
+
+
+]
+
+let names = ['Masha', "Lidia", "Tal"]
+
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+
         <p>
           Welcome to my Makeup Store!
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <MyProduct productType={'Lipstick'} price={30} image={<img src={lipstick} alt='lipstick' className='img'/>}/>
-        <MyProduct productType={'Foundation'} price={40} image={<img src={foundation} alt='foundation' className='img'/>}/>
-        <MyProduct productType={'Eyeshadow'} price={45} image={<img src={eyeshadow} alt='eyeshadow' className='img'/>}/>
-        <MyProduct productType={'Eyeliner'} price={20} image={<img src={eyeliner} alt='eyeliner' className='img'/>}/>
+        {
+          products.map((product, index) => {
+
+            return (<MyProduct key={index} productType={product.productType} price={product.price} image={product.img} alt={product.alt} className='img' />)
+          })
+        }
+        {
+          names.map((name, index) => {
+            return (<div key={index}>{name}</div>)
+          })
+        }
 
       </header>
     </div>
   );
 }
-function MyProduct(props){
-  const {productType, price, image} = props;
-  return(
-  <p>{image} Product: {productType},  Price: {price}</p>
+function MyProduct(props) {
+
+
+  const { productType, price, image, alt } = props;
+  const [price1, setPrice] = useState(price);
+  //useState get initial value (price)
+  //it sets the state (which is a variable)
+  //It also set the setter
+
+  let price2 = price;
+
+  return (
+    <p><img src={image} alt={alt} /> Product: {productType}, <span onClick={() => {
+      setPrice(price1 + 1);
+      price2++;
+      console.log(price1, price2)
+    }}
+    > Price: {price1}, {price2} </span></p>
   )
 }
 
