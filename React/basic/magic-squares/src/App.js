@@ -30,9 +30,22 @@ let squares = [
  */
 
 let squares = [];
-for (let i=0; i<40; i++) {
-  let j = i+1;
-  squares.push({squareId: j, name:`Square ${j}`})
+for (let i = 0; i < 40; i++) {
+
+  //create random color
+  let color = getRandomColor();
+
+  let j = i + 1;
+  squares.push({ squareId: j, name: `Square ${j}`, color });
+}
+
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
 }
 
 
@@ -40,35 +53,41 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-      <h1>
+        <h1>
           My Squares
-      </h1>
-       <div className='container'>
+        </h1>
+      </header>
+      <div className='container'>
         {
           squares.map((square, index) => {
-            return (<MySquares key={index} squareId={square.squareId} name={square.name} />)
-          })   
-        } 
-        </div> 
+            return (<MySquares key={index} squareId={square.squareId} name={square.name} color={square.color} />)
+          })
+        }
+      </div>
 
-      </header>
-    </div> 
+
+    </div>
   )
 };
 
 function MySquares(props) {
-  const { squareId, name } = props;
+  const { name, color } = props;
+  const [colorState, setColorState] = useState(color)
+  
   return (
 
-   <div className="wrapper">
-    <div className="mySquare"><p>{name}</p><input type='text' placeholder='color'></input></div>
-    
+    <div className="wrapper">
+      <div className="mySquare" style={{ background: `${colorState}` }}>
+        <p>{name}</p>
+        <input type='text' placeholder='color' onKeyUp={(e)=>setColorState(e.target.value)}></input>
+      </div>
+
     </div>
-    
-   
-    
+
+
+
   )
-  
+
 }
 
 export default App;

@@ -31,13 +31,9 @@
    color: cornflowerblue;
  }
 
- .wrapper{
-  width: 250px;
-  height:250px;   
- }
 
 .mySquare{
-  width: 250px;
+ 
   height:250px;
   background-color: blue;
 }
@@ -50,11 +46,13 @@
   }
 }
 
-/*
+
 .container{
   display:grid;
-  grid-template-columns: repeat(4, 20%);
-  column-gap: 10px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  
+  width: 100%;
 }
-*/
+
 
