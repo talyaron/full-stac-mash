@@ -30,7 +30,7 @@ function App() {
     <div className="app">
       <h2>Counter: {counter}</h2>
       <h3>{text}</h3>
-      <Input setText={setText} /> <Input setText={setText} /><Input setText={setText} />
+      <Input text={text} setText={setText} /> <Input text={text} setText={setText} /><Input text={text} setText={setText} />
       <div className='wrapper'>
         {
           imgs.map((coupleImgs, index) => {
@@ -49,7 +49,7 @@ function App() {
 }
 
 function Input(props) {
-  const {setText} = props;
+  const {text, setText} = props;
   return (
     <input type='text' placeholder='your text' onKeyUp={(e)=>{setText(e.target.value)}}/>
   )
