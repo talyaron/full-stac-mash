@@ -1,4 +1,7 @@
 .app{
+    text-align: center;
+}
+.wrapper{
     max-width: 600px;
     margin: auto;
     display: grid;

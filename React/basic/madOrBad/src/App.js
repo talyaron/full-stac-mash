@@ -18,21 +18,25 @@ for (let i = 0; i < 18; i++) {
 
 
 
-
+//lifting state up;
 
 
 function App() {
 
+  const [counter, setCounter] = useState(1)
 
   return (
     <div className="app">
-      {
-        imgs.map((coupleImgs, index) => {
+      <h2>Counter: {counter}</h2>
+      <div className='wrapper'>
+        {
+          imgs.map((coupleImgs, index) => {
 
-          return (<Img key={index} imgs={coupleImgs} />)
+            return (<Img key={index} imgs={coupleImgs} counter={counter} setCounter={setCounter} />)
 
-        })
-      }
+          })
+        }
+      </div>
     </div>
 
 
@@ -41,11 +45,13 @@ function App() {
 
 function Img(props) {
   const { fs1, fs2 } = props.imgs;
+  const { counter, setCounter } = props;
   const [whichFase, setWhichFase] = useState('fs1');
 
   return (<img
     src={whichFase === 'fs1' ? fs1 : fs2}
     onClick={() => {
+      setCounter(counter + 1);
       if (whichFase === 'fs1') {
         setWhichFase('fs2')
       } else {
