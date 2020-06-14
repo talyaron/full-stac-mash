@@ -24,26 +24,35 @@ for (let i = 0; i < 18; i++) {
 function App() {
 
   const [counter, setCounter] = useState(1)
-  const [text, setText] = useState
+  const [text, setText] = useState('Start writing')
 
   return (
     <div className="app">
       <h2>Counter: {counter}</h2>
+      <h3>{text}</h3>
+      <Input setText={setText} /> <Input setText={setText} /><Input setText={setText} />
       <div className='wrapper'>
         {
           imgs.map((coupleImgs, index) => {
 
-            return (<Img key={index} imgs={coupleImgs} counter={counter} setCounter={setCounter} setText={setText} />)
+            return (<Img key={index} imgs={coupleImgs} counter={counter} setCounter={setCounter} />)
 
           })
         }
 
-      <input type='text' placeholder='your text' 
+
       </div>
     </div>
 
 
   );
+}
+
+function Input(props) {
+  const {setText} = props;
+  return (
+    <input type='text' placeholder='your text' onKeyUp={(e)=>{setText(e.target.value)}}/>
+  )
 }
 
 function Img(props) {
