@@ -1,6 +1,14 @@
+.app{
+    max-width: 600px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
 img{
-    height: 200px; 
-    width: 200px;
+    /* height: 400px;  */
+    width: 100%;
     border: 2px solid black;
+   
     
 }
