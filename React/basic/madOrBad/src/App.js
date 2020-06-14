@@ -24,6 +24,7 @@ for (let i = 0; i < 18; i++) {
 function App() {
 
   const [counter, setCounter] = useState(1)
+  const [text, setText] = useState
 
   return (
     <div className="app">
@@ -32,10 +33,12 @@ function App() {
         {
           imgs.map((coupleImgs, index) => {
 
-            return (<Img key={index} imgs={coupleImgs} counter={counter} setCounter={setCounter} />)
+            return (<Img key={index} imgs={coupleImgs} counter={counter} setCounter={setCounter} setText={setText} />)
 
           })
         }
+
+      <input type='text' placeholder='your text' 
       </div>
     </div>
 
