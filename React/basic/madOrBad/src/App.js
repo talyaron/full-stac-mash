@@ -24,13 +24,24 @@ for (let i = 0; i < 18; i++) {
 function App() {
 
   const [counter, setCounter] = useState(1)
-  const [text, setText] = useState('Start writing')
+  const [text, setText] = useState('Start writing');
+  const [messages, setMessages] = useState([])
 
   return (
     <div className="app">
       <h2>Counter: {counter}</h2>
       <h3>{text}</h3>
-      <Input text={text} setText={setText} /> <Input text={text} setText={setText} /><Input text={text} setText={setText} />
+
+      <Input text={text} setText={setText} handleChange={handleChange} />
+
+      {
+        messages.map((message, index)=>{
+          return(<p key={index}>{message}</p>)
+        })
+      }
+      <div className='chatWtrapper'>
+
+      </div>
       <div className='wrapper'>
         {
           imgs.map((coupleImgs, index) => {
@@ -39,7 +50,7 @@ function App() {
 
           })
         }
-        <p>{text}</p>
+
 
 
       </div>
@@ -47,14 +58,27 @@ function App() {
 
 
   );
+
+  function handleChange(e) {
+    console.log(e.key)
+    console.log(e.target.value);
+    if (e.key === 'Enter') {
+      console.log('Enter was pressed')
+      setMessages([...messages,e.target.value ])
+      
+      e.target.value = '';
+    }
+  }
 }
 
 function Input(props) {
-  const {text, setText} = props;
+  const { text, setText, handleChange } = props;
   return (
-    <input type='text' placeholder='your text' value={text} onChange={(e)=>{setText(e.target.value)}}  onEnter={}/>
+    <input type='text' placeholder='your text' defaultValue={text} onKeyUp={handleChange} />
   )
 }
+
+
 
 function Img(props) {
   const { fs1, fs2 } = props.imgs;
