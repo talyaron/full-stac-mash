@@ -39,6 +39,7 @@ function App() {
 
           })
         }
+        <p>{text}</p>
 
 
       </div>
@@ -51,7 +52,7 @@ function App() {
 function Input(props) {
   const {text, setText} = props;
   return (
-    <input type='text' placeholder='your text' value={text} onChange={(e)=>{setText(e.target.value)}}/>
+    <input type='text' placeholder='your text' value={text} onChange={(e)=>{setText(e.target.value)}}  onEnter={}/>
   )
 }
 
