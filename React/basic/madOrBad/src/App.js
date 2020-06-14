@@ -51,7 +51,7 @@ function App() {
 function Input(props) {
   const {text, setText} = props;
   return (
-    <input type='text' placeholder='your text' onKeyUp={(e)=>{setText(e.target.value)}}/>
+    <input type='text' placeholder='your text' value={text} onChange={(e)=>{setText(e.target.value)}}/>
   )
 }
 
@@ -73,13 +73,7 @@ function Img(props) {
     }} />)
 }
 
-// function Serious(props) {
-//   const { img } = props;
-//   const [isSerious, setIsSerious] = useState(true);
 
-//   return (<img src={isSerious ? img : laughing} onClick={() => { setIsSerious(!isSerious) }} />)
-
-// }
 
 
 
