@@ -8,19 +8,29 @@ function App() {
 
   const [sum, setSum] = useState(2)
   const [text, setText] = useState("33");
+  const [yearR, setYear] = useState(0)
 
   useEffect(() => {
     fetch('/api/hi')
       .then(response => response.json())
       .then(data => {
-       
+
         setText(data.text)
+      });
+
+    fetch('/api/date')
+      .then(response => response.json())
+      .then(data => {
+        const {year} = data; 
+        console.log(data)
+        setYear(year)
       });
   }, [])
 
   return (
     <div>
       <h1>{text}</h1>
+      <h1>The Year is {yearR}</h1>
       <Rect sum={sum} setSum={setSum} />
       <Rect sum={sum} setSum={setSum} />
       <h1>Sum: {sum}</h1>

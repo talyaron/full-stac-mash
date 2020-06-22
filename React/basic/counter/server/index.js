@@ -12,4 +12,9 @@ app.get('/api/hi', (req, res)=>{
     res.send(text)
 });
 
+app.get('/api/date', (req, res)=>{
+    res.send({year:new Date().getFullYear()})
+});
+
+
 app.listen(port, ()=>{console.log(`listen on port ${port}`)})
