@@ -25,10 +25,14 @@ ul{
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 li{
-  border: 1px solid, black;
-  text-decoration: none;
+  border: 1px solid black;
+  
   list-style: none;
   grid-template-columns: 20% 20% 20% 20%
+}
+
+li a{
+  text-decoration: none;
 }
 footer{
   background-color: lightskyblue;

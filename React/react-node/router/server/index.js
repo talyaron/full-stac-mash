@@ -12,9 +12,9 @@ const number = { "number": "120" };
 const number2 = { "number2": "68" };
 
 const users = [
-    { userID: 1, name: 'Masha', address: 'California', phoneNumber: '123456'},
-    { userID: 2, name: 'Lidia', address: 'Haifa', phoneNumber:'987654' },
-    { userID: 3, name: 'Tal', address: 'Tel-Aviv', phoneNumber:'654321'}
+    { userID: 1, name: 'Masha', email: 'masha.alarcon@gmail.com', password: '12345678', address: 'California', phoneNumber: '123456' },
+    { userID: 2, name: 'Lidia', email: 'ivlidia@gmail.com', password: '12345678', address: 'Haifa', phoneNumber: '987654' },
+    { userID: 3, name: 'Tal', email: 'tal.yaron@gmail.com', password: '12345678', address: 'Tel-Aviv', phoneNumber: '654321' }
 ]
 
 app.get('/api/hi', (req, res) => {
@@ -41,8 +41,8 @@ app.get('/api/users/:userID', (req, res) => {
 
 
 
-    let  { userID } = req.params;
-    userID =  parseInt(userID); 
+    let { userID } = req.params;
+    userID = parseInt(userID);
     console.log('userID', typeof userID)
 
     const index = users.findIndex(user => user.userID === userID);
@@ -58,6 +58,54 @@ app.get('/api/users/:userID', (req, res) => {
 
 })
 
+app.post('/api/send-form', (req, res) => {
+    console.log(req.body);
+
+    // console.log(a,b,c);
+    res.send({ success: true })
+})
+
+app.post('/api/register', (req, res) => {
+    console.log(req.body);
+
+    //if email value === email value in database
+
+    const { email, pass1 } = req.body;
+    console.log(email)
+
+    const index = users.findIndex(user => user.email === email);
+
+    if (index == -1) {
+        //REGISTRATION IS ALLWOED
+       const userID = guidGenerator();
+        users.push({userID,email, password: pass1})
+        console.log(users)
+        res.send({success: true})
+       
+    } else {
+        res.send({ error: 'user allready exists' })
+    }
+
+
+   
+})
+
+app.post('/api/login',(req, res)=>{
+
+    //get the inputs from the client (email, password)
+
+    //check if the user exists in users // if not respoond with user doesnot exist
+
+    //check if the passwors match
+
+    // if they match the respond with login sucessful
+
+    //if they dont match respond with login failure
+
+    //* if login succesfull, redirect the client to "home"
+
+})
+
 app.listen(port, () => { console.log(`listen on port ${port}`) })
 
 
@@ -65,7 +113,12 @@ app.listen(port, () => { console.log(`listen on port ${port}`) })
 
 
 
-
+function guidGenerator() {
+    var S4 = function() {
+       return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+    };
+    return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+}
 
 
 
