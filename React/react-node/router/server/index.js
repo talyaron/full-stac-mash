@@ -12,9 +12,9 @@ const number = { "number": "120" };
 const number2 = { "number2": "68" };
 
 const users = [
-    { userID: 1, name: 'Masah' },
-    { userID: 2, name: 'Lidia' },
-    { userID: 3, name: 'Tal' }
+    { userID: 1, name: 'Masha', address: 'California', phoneNumber: '123456'},
+    { userID: 2, name: 'Lidia', address: 'Haifa', phoneNumber:'987654' },
+    { userID: 3, name: 'Tal', address: 'Tel-Aviv', phoneNumber:'654321'}
 ]
 
 app.get('/api/hi', (req, res) => {
@@ -53,7 +53,7 @@ app.get('/api/users/:userID', (req, res) => {
     } else {
         let user = users[index];
 
-        res.send({ name: user.name })
+        res.send({ name: user.name, address: user.address, phoneNumber: user.phoneNumber })
     }
 
 })

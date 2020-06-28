@@ -15,5 +15,22 @@ html{
 
 .page{
   background-color: lightgray;
-  
 }
+
+
+ul{
+  text-align: center;
+  text-decoration: none;
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+li{
+  border: 1px solid, black;
+  text-decoration: none;
+  list-style: none;
+  grid-template-columns: 20% 20% 20% 20%
+}
+footer{
+  background-color: lightskyblue;
+}
+
