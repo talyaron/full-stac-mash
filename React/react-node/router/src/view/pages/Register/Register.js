@@ -5,6 +5,7 @@ function Register() {
 
     return (
         <div>
+            <h1>Register</h1>
             <form className='form' onSubmit={submitRegistration}>
                 <input type='email' placeholder='email' name='email' />
                 <input type='password' placeholder='password' name='pass1' />

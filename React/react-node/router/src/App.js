@@ -14,6 +14,7 @@ import About from './view/pages/About/About';
 import Users from './view/pages/Users/Users';
 import Games from './view/pages/Games/Games';
 import Register from './view/pages/Register/Register';
+import Login from './view/pages/Login/Login';
 
 export default function App() {
   return (
@@ -36,6 +37,9 @@ export default function App() {
             <li>
               <Link to="/register">Register</Link>
             </li>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
           </ul>
         </nav>
 
@@ -57,6 +61,9 @@ export default function App() {
           </Route>
           <Route path="/register">
             <Register />
+          </Route>
+          <Route path="/login">
+            <Login />
           </Route>
         </Switch>
         <footer>This is our amazing app</footer>

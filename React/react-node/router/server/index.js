@@ -12,9 +12,9 @@ const number = { "number": "120" };
 const number2 = { "number2": "68" };
 
 const users = [
-    { userID: 1, name: 'Masha', email: 'masha.alarcon@gmail.com', password: '12345678', address: 'California', phoneNumber: '123456' },
+    { userID: 1, name: 'Masha', email: 'masha.alarcon@gmail.com', password: '12345677', address: 'California', phoneNumber: '123456' },
     { userID: 2, name: 'Lidia', email: 'ivlidia@gmail.com', password: '12345678', address: 'Haifa', phoneNumber: '987654' },
-    { userID: 3, name: 'Tal', email: 'tal.yaron@gmail.com', password: '12345678', address: 'Tel-Aviv', phoneNumber: '654321' }
+    { userID: 3, name: 'Tal', email: 'tal.yaron@gmail.com', password: '12345679', address: 'Tel-Aviv', phoneNumber: '654321' }
 ]
 
 app.get('/api/hi', (req, res) => {
@@ -91,16 +91,39 @@ app.post('/api/register', (req, res) => {
 })
 
 app.post('/api/login',(req, res)=>{
+    console.log(req.body);
+
 
     //get the inputs from the client (email, password)
+    const { email, password } = req.body;
+    console.log(email)
 
     //check if the user exists in users // if not respoond with user doesnot exist
-
+    const index = users.findIndex(user => user.email === email);
+    const checkPass = users.findIndex(user => user.password === password);
+    
+    if (index == -1) {
+        res.send({ error: 'sorry, user does not exist' })
+    } else {
+       // res.send({success: true})
     //check if the passwors match
+        if (checkPass == -1 || index != checkPass) {
+             //if they dont match respond with login failure
+            res.send({ error: 'sorry, users password does NOT match' })
+        
+        }
+         // if they match the respond with login sucessful
+        else{
+            res.send({success: 'Login successful!'})
+        }
+    }
+   
+   
 
-    // if they match the respond with login sucessful
 
-    //if they dont match respond with login failure
+
+
+    
 
     //* if login succesfull, redirect the client to "home"
 
