@@ -133,7 +133,7 @@ if (argv.u) {
 
             var dbo = db.db("mydb");
             var myquery = { name: "lipstick2" };
-            var newvalues = { $set: { color: "light pink" } };
+            var newvalues = { $set: { color: "light purple" } };
             dbo.collection("products").updateOne(myquery, newvalues, function (err, res) {
                 if (err) throw err;
                 console.log("1 document updated");
@@ -163,15 +163,15 @@ if(argv.d){
               console.log("1 document deleted");
               db.close();
             });
-            var dbo = db.db("mydb");
-            var myquery = { color: "dark" };
+           
+            myquery = { color: "dark" };
             dbo.collection("products").deleteOne(myquery, function(err, obj) {
               if (err) throw err;
               console.log("1 document deleted");
               db.close();
             });
-            var dbo = db.db("mydb");
-            var myquery = { color: "ruby red" };
+           
+            myquery = { color: "ruby red" };
             dbo.collection("products").deleteOne(myquery, function(err, obj) {
               if (err) throw err;
               console.log("1 document deleted");
