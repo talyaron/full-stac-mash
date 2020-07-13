@@ -41,7 +41,7 @@ app.get('/api/users/:userID', (req, res) => {
 
 
 
-    let { userID } = req.params;
+    let { userID } = req.params; 
     userID = parseInt(userID);
     console.log('userID', typeof userID)
 
