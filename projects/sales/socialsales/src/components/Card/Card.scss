@@ -1,0 +1,17 @@
+.card{
+    background-color: var(--white);
+    color:var(--strong);
+    border-radius: var(--softRound);
+    width: fit-content;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.39);
+    display: flex;
+
+    &__image{
+        background-color: green;
+    }
+
+    &__info-box{
+        background-color: red;
+    }
+}

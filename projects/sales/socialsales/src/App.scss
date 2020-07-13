@@ -1,0 +1,12 @@
+:root{
+  --bakg:#f6f7fc;
+  --white:white;
+  --strong:#17171b;
+
+  --softRound:3rem;
+  --sharpRound:1rem;
+}
+
+body, html{
+  background-color: var(--bakg);
+}
