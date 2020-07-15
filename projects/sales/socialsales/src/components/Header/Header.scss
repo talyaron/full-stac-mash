@@ -47,6 +47,12 @@
         &--small {
             font-size: 1rem;
             color: var(--lightGray);
+            display: flex;
+            align-items: center;
+
+            *{
+                margin: 0px 5px;
+            }
         }
     }
 
@@ -54,7 +60,7 @@
         font-size: 5rem;
 
         &--small {
-            font-size:1.5rem;
+            font-size:2rem;
         }
     }
 }

@@ -18,11 +18,18 @@ const Header = () => {
 
             <div className='header__box--small'>
                 <div className='header__box--tiny'>
-                    <div className='header__sub-title--small'>This month you earned</div>
+                    <div className='header__sub-title--small'>
+                        <div className='circle orange'></div>
+
+                        <div> This month you earned</div>
+                    </div>
                     <div className='header__money--small'>$50</div>
                 </div>
                 <div className='header__box--tiny'>
-                    <div className='header__sub-title--small'>This week you earned </div>
+                    <div className='header__sub-title--small'>
+                        <div className='circle blue'></div>
+                        <div>This week you earned </div>
+                    </div>
                     <div className='header__money--small'>$14</div>
                 </div>
 
