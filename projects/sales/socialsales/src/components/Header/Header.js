@@ -11,7 +11,7 @@ const Header = () => {
                 <img src={Logo} alt='logo'/>
                 <div>Social sales</div>
             </div>
-            <div className='header__subtitle'>This is Subtitle</div>
+            <div className='header__sub-title'>So Far You Earned</div>
             <div className='header__money'>$$</div>
        </div>
        

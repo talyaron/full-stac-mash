@@ -44,8 +44,9 @@
         }
     }
 
-    &__subtitle {
+    &__sub-title {
         font-size: var(--fontBig);
+        color: var(--lightGray);
     }
 
     &__subtitle--small {
