@@ -9,16 +9,17 @@
         text-align: center;
 
         &--small {
-            display: inline-flex;
-            justify-content: space-between;
+            display: flex;
+            justify-content: space-around;
+            //justify-content: space-between;
             flex-direction: row;
             //justify-content: space-evenly;
             //align-content: center;
         }
         &--tiny {
-            background-color: rgb(214, 124, 192);
             padding: 20px;
             margin: 10px;
+            text-align: center;
         }
     }
 
@@ -44,15 +45,16 @@
         color: var(--lightGray);
 
         &--small {
-            font-size: var(--fontSmall);
+            font-size: 1rem;
+            color: var(--lightGray);
         }
     }
 
     &__money {
-        font-size: var(--fontBig);
+        font-size: 5rem;
 
         &--small {
-            font-size: var(--fontSmall);
+            font-size:1.5rem;
         }
     }
 }
