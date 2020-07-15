@@ -12,7 +12,7 @@ const Header = () => {
                 <div>Social sales</div>
             </div>
             <div className='header__sub-title'>So Far You Earned</div>
-            <div className='header__money'>$$</div>
+            <div className='header__money'>$127</div>
        </div>
        
 

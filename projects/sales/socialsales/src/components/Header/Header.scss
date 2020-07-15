@@ -10,7 +10,6 @@
     //flex-direction: column;
 
     &__box {
-        background-color: rgba(255, 255, 255, 0.075);
         text-align: center;
     }
     &__box--small {
@@ -54,7 +53,7 @@
     }
 
     &__money {
-        font-size: var(--fontBig);
+        font-size: 3rem;
     }
     &__money--small {
         font-size: var(--fontSmall);
