@@ -1,11 +1,16 @@
 import React from 'react';
 import './Header.scss';
 
+import Logo from '../../img/logo.svg'
+
 const Header = () => {
     return (
         <div className='header'>
         <div className='header__box'>
-            <div className='header__logo'>Main Logo</div>
+            <div className='header__logo'>
+                <img src={Logo} alt='logo'/>
+                <div>Social sales</div>
+            </div>
             <div className='header__subtitle'>This is Subtitle</div>
             <div className='header__money'>$$</div>
        </div>

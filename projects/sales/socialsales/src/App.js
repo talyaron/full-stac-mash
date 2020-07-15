@@ -4,7 +4,6 @@ import './App.scss';
 
 import Card from './components/Card/Card';
 import Header from './components/Header/Header';
-import ButtonLG from './components/ButtonLG/ButtonLG';
 import Button from './components/Button/Button';
 
 function App() {
@@ -13,11 +12,11 @@ function App() {
       <Header />
 
       <Card /> 
-      <ButtonLG />
+      
       <Card  />
-      <Button />
+      <Button text='Add'/>
       <Card  />
-      <Button />
+      <Button text='Add to your sales'/>
       
 
     </div>

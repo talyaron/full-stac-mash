@@ -1,52 +1,61 @@
-.header{
+.header {
     background-color: var(--strong);
-    color:var(--white);
-    border-radius: var(--softRound);
+    color: var(--white);
+    border-radius: 0px 0px var(--softRound) var(--softRound);
     //width: 20%;
-    width: fit-content;
-    padding: 20px;
+    width: 100%;
+
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.39);
     //display: inline-flex;
     //flex-direction: column;
-  
 
-
-    &__box{
-        background-color: lightsalmon;
-        padding:20px;
-        
+    &__box {
+        background-color: rgba(255, 255, 255, 0.075);
+        text-align: center;
     }
-    &__box--small{
+    &__box--small {
         display: inline-flex;
         justify-content: space-between;
         flex-direction: row;
         //justify-content: space-evenly;
         //align-content: center;
     }
-    &__box--tiny{
+    &__box--tiny {
         background-color: rgb(214, 124, 192);
         padding: 20px;
         margin: 10px;
-        
     }
 
-    &__subtitle{
+    &__logo {
+       
+        display: flex;
+        justify-content: center;
+
+        img {
+            height: 7rem;
+        }
+
+        div {
+            font-size: 2.5rem;
+            height: 7rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    }
+
+    &__subtitle {
         font-size: var(--fontBig);
     }
 
-    &__subtitle--small{
+    &__subtitle--small {
         font-size: var(--fontSmall);
     }
-     
-    &__money{
+
+    &__money {
         font-size: var(--fontBig);
-
     }
-    &__money--small{
+    &__money--small {
         font-size: var(--fontSmall);
-
     }
-
-    }
-
-
+}
