@@ -4,7 +4,7 @@
   --strong:#17171b;
   --lightGray:#c4c6d3;
 
-  --softRound:3rem;
+  --softRound:1.5rem;
   --sharpRound:1rem;
 
   --fontBig: 1.4rem;
@@ -15,6 +15,8 @@
 body, html{
   background-color: var(--bakg);
   font-family: 'Roboto', sans-serif;
+  width: 100vw;
+  margin:0px
 }
 button{
   font-family: 'Roboto', sans-serif;
@@ -33,4 +35,18 @@ button{
 }
 .orange{
   background-color: #fd8200;
+}
+
+.App{
+
+}
+
+.cardsWrapper{
+  margin-top: 40px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.page{
+  width: 100%;
 }
