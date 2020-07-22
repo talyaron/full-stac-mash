@@ -25,9 +25,9 @@ const Login = () => {
                 }
             }).then(res => res.json())
             .then(data=>{
-                console.log(data)
+               
 
-                if ('success' in data){
+                if ('success' in data && data.success){
                     history.push('/home')
                     }else{
                         alert('Username or Password incorrect! Please try again.')
@@ -41,9 +41,11 @@ const Login = () => {
     return (<div className='login'>
         <h1>Log-in to your account</h1>
         <form onSubmit={handleLogin} >
-            <input type='email' name='email' placeholder='email' />
-            <input type='text' name='password' placeholder='password' />
-            <input type='submit' value='Login' />
+            <input className='inputs' type='email' name='email' placeholder='email' />
+            <input className='inputs' type='text' name='password' placeholder='password' />
+            <input className='buttonMain' type='submit' value='Login' />
+            <input className='buttonMain secondary' type='submit' value='Cancel' />
+           
         </form>
     </div >)
 }

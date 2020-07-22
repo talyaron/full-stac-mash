@@ -2,6 +2,17 @@
     background-color: var(--strong);
     height: 100vh;
     text-align: center;
-    color: var(--white)
+    color: var(--white);
+    padding: 20px;
 
+    form{
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+        margin: auto;
+
+        input{
+            margin: 10px 0px;
+        }
+    }
 }

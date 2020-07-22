@@ -3,28 +3,28 @@ import './Start.scss';
 
 import Logo from '../../../img/logo.svg'
 
-import { useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
-const Start = ()=>{
+const Start = () => {
 
     const history = useHistory();
 
-    const handleRedirect = ()=>{
+    const handleRedirect = () => {
         history.push('/register')
     }
 
-    return(
-        
+    return (
+
         <div className='start page'>
-        <div className='start-header'>
-             
-                    <img src={Logo} alt='logo' />
-                    <h1>Social Sales</h1>
+            <div className='start-header'>
+
+                <img src={Logo} alt='logo' />
+                <h1>Social Sales</h1>
+            </div>
+            <button className='button' variant="primary" size="lg" onClick={handleRedirect}>Register</button>
         </div>
-                    <button variant="primary" size="lg" onClick={handleRedirect}>Register</button>
-                    </div>      
-    ) 
-               
+    )
+
 }
 export default Start;
 

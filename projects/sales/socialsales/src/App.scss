@@ -1,28 +1,29 @@
-:root{
-  --bakg:#f6f7fc;
-  --white:white;
-  --strong:#17171b;
-  --lightGray:#c4c6d3;
+:root {
+  --bakg: #f6f7fc;
+  --white: white;
+  --strong: #17171b;
+  --lightGray: #c4c6d3;
+  --accent: #4b24ce;
 
-  --softRound:1.5rem;
-  --sharpRound:1rem;
+  --softRound: 1.5rem;
+  --sharpRound: 1rem;
 
   --fontBig: 1.4rem;
   --fontSmall: 0.6rem;
-
 }
 
-body, html{
+body,
+html {
   background-color: var(--bakg);
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   width: 100vw;
-  margin:0px
+  margin: 0px;
 }
-button{
-  font-family: 'Roboto', sans-serif;
+button {
+  font-family: "Roboto", sans-serif;
 }
 
-.circle{
+.circle {
   width: 10px;
   height: 10px;
   border-radius: 5px;
@@ -30,23 +31,47 @@ button{
 }
 
 // colors
-.blue{
+.blue {
   background-color: #4b24ce;
 }
-.orange{
+.orange {
   background-color: #fd8200;
 }
 
-.App{
-
+.App {
 }
 
-.cardsWrapper{
+.cardsWrapper {
   margin-top: 40px;
   margin-left: 10px;
   margin-right: 10px;
 }
 
-.page{
+.page {
   width: 100%;
+}
+
+.inputs {
+  border-radius: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1.3rem;
+  border: none;
+}
+
+.buttonMain {
+  border-radius: 5px;
+  background-color: var(--accent);
+  border: none;
+  padding: 20px;
+  color: wheat;
+  font-size: 1.5rem;
+
+  
+}
+
+.secondary {
+  background-color: rgba(0, 0, 0, 0);
+  border: 2px solid var(--accent);
+  color: white;
 }

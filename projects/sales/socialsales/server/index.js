@@ -28,27 +28,29 @@ MongoClient.connect(url, { useUnifiedTopology: true }, function (err, database) 
     //               //db.close();
     //           });
 
-    var myobj = { email: 'masha.alarcon@gmail.com' , password: '1234'};
-    db.collection("users").insertOne(myobj, function (err, res) {
-        if (err) throw err;
-        console.log("1 document inserted");
-        //db.close();
-    });
+    // var myobj = { email: 'masha.alarcon@gmail.com' , password: '1234'};
+    // db.collection("users").insertOne(myobj, function (err, res) {
+    //     if (err) throw err;
+    //     console.log("1 document inserted");
+    //     //db.close();
+    // });
 
-    var myobj1 = { email: 'ivlidia@gmail.com' , password: '5678'};
-    db.collection("users").insertOne(myobj1, function (err, res) {
-        if (err) throw err;
-        console.log("1 document inserted");
-        //db.close();
+    // var myobj1 = { email: 'ivlidia@gmail.com' , password: '5678'};
+    // db.collection("users").insertOne(myobj1, function (err, res) {
+    //     if (err) throw err;
+    //     console.log("1 document inserted");
+    //     //db.close();
 
-    });
-
-});
+    // });
 
     // Start the application after the database connection is ready
     app.listen(4000, () => {
         console.log("Listening on port 4000");
     });
+
+});
+
+
 
 
 
@@ -70,38 +72,38 @@ app.post('/api/register', (req, res) => {
             if (doc) {
                 results.push(doc)
             }
-            else { 
-        
+            else {
 
-            const index = results.findIndex(user => user.email === email);
 
-            if (index == -1) {
-                //REGISTRATION IS ALLWOED
-               
-                //users.push({email, password})
-               // console.log(users)
+                const index = results.findIndex(user => user.email === email);
 
-                db.collection("users").insertOne({email,password}, function (err, result) {  // add new user to DB
+                if (index == -1) {
+                    //REGISTRATION IS ALLWOED
 
-                    if (err) console.log(err);
-    
-                    console.log("new user added");
-    
-                    res.send({ success: true})
-    
-                })
-                //res.send({success: true})
-               
-            } else {
-                res.send({ error: 'user allready exists' })
+                    //users.push({email, password})
+                    // console.log(users)
+
+                    db.collection("users").insertOne({ email, password }, function (err, result) {  // add new user to DB
+
+                        if (err) console.log(err);
+
+                        console.log("new user added");
+
+                        res.send({ success: true })
+
+                    })
+                    //res.send({success: true})
+
+                } else {
+                    res.send({ error: 'user allready exists' })
+                }
             }
-            }
-        
+
         });
     });
 });
 
-app.post('/api/login',(req, res)=>{
+app.post('/api/login', (req, res) => {
     console.log(req.body);
 
 
@@ -117,27 +119,27 @@ app.post('/api/login',(req, res)=>{
 
             if (doc) {
                 results.push(doc)
-            } else{
-            //check if the user exists in users // if not respoond with user doesnot exist
-           const index = results.findIndex(user => user.email === email);
-            const checkPass = results.findIndex(user => user.password === password);
-    
-           if (index == -1) {
-            res.send({ error: 'sorry, user does not exist' })
-           } else {
-           // res.send({success: true})
-           //check if the passwors match
-           } if (checkPass == -1 || index != checkPass) {
-             //if they dont match respond with login failure
-            res.send({ error: 'sorry, users password does NOT match' })
-        
-           }
-            // if they match the respond with login sucessful
-            else{
-            res.send({success: 'Login successful!'})
+            } else {
+                //check if the user exists in users // if not respoond with user doesnot exist
+                const index = results.findIndex(user => user.email === email);
+                const checkPass = results.findIndex(user => user.password === password);
+
+                if (index == -1) {
+                    res.send({ error: 'sorry, user does not exist' })
+                } else {
+                    // res.send({success: true})
+                    //check if the passwors match
+                } if (checkPass == -1 || index != checkPass) {
+                    //if they dont match respond with login failure
+                    res.send({ error: 'sorry, users password does NOT match' })
+
+                }
+                // if they match the respond with login sucessful
+                else {
+                    res.send({ success:true})
+                }
             }
-            }
-        
+
 
         });
     });

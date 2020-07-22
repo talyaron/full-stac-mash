@@ -24,28 +24,30 @@ const Register = () => {
                     'Content-Type': 'application/json'
                 }
             }).then(res => res.json())
-            .then(data=>{
-                console.log(data)
+                .then(data => {
+                    console.log(data)
 
-                if ('success' in data){
-                    history.push('/home')
-                    }else{
+                    if ('success' in data) {
+                        history.push('/home')
+                    } else {
                         alert('This user credentials already exist! Please login to your existing account.')
                         history.push('/login')
                     }
-            })
-          
-        } 
+                })
+
+        }
 
     }
-    return (<div className='registration page'>
-        <h1>New user Registration</h1>
-        <form onSubmit={handleRegistration} >
-            <input type='email' name='email' placeholder='email' />
-            <input type='text' name='password' placeholder='password' />
-            <input type='submit' value='Register' />
-        </form>
-    </div >)
+    return (
+        <div className='registration page login'>
+            <h1>New user Registration</h1>
+            <form onSubmit={handleRegistration} >
+                <input className='inputs' type='email' name='email' placeholder='email' />
+                <input className='inputs' type='text' name='password' placeholder='password' />
+                <input type='submit' value='Register' />
+            </form>
+        </div >
+    )
 }
 
 
