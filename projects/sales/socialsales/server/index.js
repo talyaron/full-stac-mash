@@ -22,6 +22,28 @@ MongoClient.connect(url, { useUnifiedTopology: true }, function (err, database) 
     if (err) throw err;
 
     db = database.db("mydb");
+    // db.createCollection("users", function (err, res) {
+    //               if (err) throw err;
+    //               console.log("Users collection created!");
+    //               //db.close();
+    //           });
+
+    var myobj = { email: 'masha.alarcon@gmail.com' , password: '1234'};
+    db.collection("users").insertOne(myobj, function (err, res) {
+        if (err) throw err;
+        console.log("1 document inserted");
+        //db.close();
+    });
+
+    var myobj1 = { email: 'ivlidia@gmail.com' , password: '5678'};
+    db.collection("users").insertOne(myobj1, function (err, res) {
+        if (err) throw err;
+        console.log("1 document inserted");
+        //db.close();
+
+    });
+
+});
 
     // Start the application after the database connection is ready
     app.listen(4000, () => {
@@ -31,10 +53,16 @@ MongoClient.connect(url, { useUnifiedTopology: true }, function (err, database) 
 
 
 
-});
+app.post('/api/register', (req, res) => {
+    console.log(req.body);
 
-app.get("/api/get-all-products", function (req, res) {
-    db.collection("products").find({}, (err, docs) => {
+    //if email value === email value in database
+
+    const { email, password } = req.body;
+    console.log(email)
+
+
+    db.collection("users").find({ email }, (err, docs) => {
         const results = []
         docs.each(function (err, doc) {
             console.log(doc);
@@ -42,51 +70,78 @@ app.get("/api/get-all-products", function (req, res) {
             if (doc) {
                 results.push(doc)
             }
-            else {
-                res.send(results);
+            else { 
+        
+
+            const index = results.findIndex(user => user.email === email);
+
+            if (index == -1) {
+                //REGISTRATION IS ALLWOED
+               
+                //users.push({email, password})
+               // console.log(users)
+
+                db.collection("users").insertOne({email,password}, function (err, result) {  // add new user to DB
+
+                    if (err) console.log(err);
+    
+                    console.log("new user added");
+    
+                    res.send({ success: true})
+    
+                })
+                //res.send({success: true})
+               
+            } else {
+                res.send({ error: 'user allready exists' })
             }
+            }
+        
         });
     });
 });
 
-app.get('/api/get-all-lipstick', (req, res) => {
-    db.collection('products').find({ type: 'lipstick' }, (err, docs) => {
+app.post('/api/login',(req, res)=>{
+    console.log(req.body);
+
+
+    //get the inputs from the client (email, password)
+    const { email, password } = req.body;
+    console.log(email)
+
+
+    db.collection("users").find({ email }, (err, docs) => {
         const results = []
         docs.each(function (err, doc) {
-            if (err) console.log('Error', err);
-
-
             console.log(doc);
 
             if (doc) {
                 results.push(doc)
+            } else{
+            //check if the user exists in users // if not respoond with user doesnot exist
+           const index = results.findIndex(user => user.email === email);
+            const checkPass = results.findIndex(user => user.password === password);
+    
+           if (index == -1) {
+            res.send({ error: 'sorry, user does not exist' })
+           } else {
+           // res.send({success: true})
+           //check if the passwors match
+           } if (checkPass == -1 || index != checkPass) {
+             //if they dont match respond with login failure
+            res.send({ error: 'sorry, users password does NOT match' })
+        
+           }
+            // if they match the respond with login sucessful
+            else{
+            res.send({success: 'Login successful!'})
             }
-            else {
-                res.send(results);
             }
+        
+
         });
-    })
-})
-
-app.put('/api/update-color', (req, res) => {
-    const { product, newColor } = req.body;
-    console.log(product);
-    console.log(newColor)
-    console.log(product._id)
-    const id = new ObjectID(product._id);
-    //find the specific product and update it
-    const myQuery = { _id: id };
-
-    const newValues = { $set: { color: newColor } };
-
-    db.collection("products").updateOne(myQuery, newValues, function (err, res) {
-        if (err) console.log(err);
-        console.log("1 document updated");
-       
     });
-
-    res.send({ success: true })
-})
+});
 
 
 

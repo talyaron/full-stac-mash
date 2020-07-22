@@ -13,6 +13,7 @@ import {
 import Home from './view/components/Main/Home/Home';
 import Start from './view/Pages/Start/Start';
 import Register from './view/Pages/Register/Register';
+import Login from './view/Pages/Login/Login';
 
 
 function App() {
@@ -28,6 +29,9 @@ function App() {
        
         <Route path="/register">
           <Register />
+        </Route>
+        <Route path="/login">
+          <Login />
         </Route>
         <Route path="/">
           <Start />
