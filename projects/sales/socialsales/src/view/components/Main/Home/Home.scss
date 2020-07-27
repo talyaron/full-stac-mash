@@ -1,7 +1,20 @@
+.cardsWrapper{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:10px;
+    max-width: 1200px;
+    margin: auto;
+}
 
-@media (min-width: 720px) {
+
+@media screen and (max-width:1200px) {
     .cardsWrapper {
-        display: flex;
-        justify-content: space-around;
+        grid-template-columns: repeat(2, 1fr);
+        margin: 20px;
+    }
+}
+@media screen and (max-width:600px) {
+    .cardsWrapper {
+        grid-template-columns: repeat(1, 1fr);
     }
 }
