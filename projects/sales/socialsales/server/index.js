@@ -43,6 +43,28 @@ MongoClient.connect(url, { useUnifiedTopology: true }, function (err, database) 
 
     // });
 
+
+    //  db.createCollection("cards", function (err, res) {
+    //               if (err) throw err;
+    //               console.log("Cardss collection created!");
+    //               //db.close();
+    //           });
+
+               var myobj = {image: '' , title: 'Nike FE/NOM Flyknit',price: '$140', discount: '15% discount', comission: 'Comission $5.20' , ttldiscount: '$119 after discount'};
+    db.collection("cards").insertOne(myobj, function (err, res) {
+        if (err) throw err;
+        console.log("1 document inserted");
+        //db.close();
+    });
+
+    var myobj1 = {image: '' , title: 'Golf Jacket' , price: '$130', discount: '10% discount', comission: 'Comission $6.20' , ttldiscount: '$109 after discount'};
+    db.collection("cards").insertOne(myobj1, function (err, res) {
+        if (err) throw err;
+        console.log("1 document inserted");
+        //db.close();
+
+    });
+
     // Start the application after the database connection is ready
     app.listen(4000, () => {
         console.log("Listening on port 4000");
@@ -50,8 +72,21 @@ MongoClient.connect(url, { useUnifiedTopology: true }, function (err, database) 
 
 });
 
+app.get("/api/get-all-cards", function (req, res) {
+    db.collection("cards").find({}, (err, docs) => {
+        const results = []
+        docs.each(function (err, doc) {
+            console.log(doc);
 
-
+            if (doc) {
+                results.push(doc)
+            }
+            else {
+                res.send(results);
+            }
+        });
+    });
+});
 
 
 

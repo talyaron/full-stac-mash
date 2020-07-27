@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Home.scss';
 
 
@@ -17,17 +17,36 @@ import Header from '../../Header/Header';
 import Button from '../../Button/Button';
 
 function Home() {
+
+  const [cards, setCards] = useState([]);
+  // const [edit, setEdit] = useState(false)
+
+  useEffect(() => {
+    fetch('/api/get-all-cards')
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        setCards(data);
+      })
+  }, [])
+
   return (
     <div className="">
       <Header />
       <div className='cardsWrapper'>
-        <Card image={Flyknit} title='Nike FE/NOM Flyknit' price='$140' discount='15% discount' comission='Comission $5.20' ttldiscount='$119 after discount' />
+        {
+          cards.map((card, index) => {
+            return <h4 key={index}> <Card card={card} /> </h4>
+          })
+        }
+        {/* <div className='cardsWrapper'>
+      <Card image={Flyknit} title='Nike FE/NOM Flyknit' price='$140' discount='15% discount' comission='Comission $5.20' ttldiscount='$119 after discount' /> 
 
         <Card image={Jordan} title='Jordan Jacket' price='$150' discount='20% discount' comission='Comission $4.20' ttldiscount='$114 after discount' />
 
         <Card image={Golfjacket} title='Golf Jacket' price='$180' discount='30% discount' comission='Comission $4.50' ttldiscount='$116 after discount' />
-
-        <CardCurrentSale image={Nikerepel} title='Nike Repel' earned='Earned so far $135' purchases='Number of purchases: 35'/>
+        <CardCurrentSale image={Nikerepel} title='Nike Repel' earned='Earned so far $135' purchases='Number of purchases: 35'/> 
+      </div> */}
       </div>
       <Button text='Add' />
       <Button text='Add to your sales' />
