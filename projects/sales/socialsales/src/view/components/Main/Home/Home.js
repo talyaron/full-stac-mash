@@ -33,28 +33,28 @@ function Home() {
  const promises = [];
 
  useEffect(() => {
-   fetch(`/api/get-user-info/${id}`)
+   fetch(`/api/get-user-cards/${id}`)
    .then(res => res.json())
-   .then(data => {
-     console.log(data.cards)
-     if (data.cards) {
-       data.cards.map((x) => {
-         promises.push(
-           fetch(`/api/get-card-by-id/${x}`)
-           .then(res => res.json())
-           .then(c => {
-             userCards.push(c)
-           })
-         )
-         Promise.all(promises).then(() => { 
-           console.log(userCards); 
-           setCards(userCards); 
-           setMove(userCards.map(x => x.type)) 
-         })
-       })
-     } else {
-       setCards([])
-     }
+   .then(cards => {
+     console.log(cards)
+    //  if (false) {
+    //    data.cards.map((x) => {
+    //      promises.push(
+    //        fetch(`/api/get-card-by-id/${x}`)
+    //        .then(res => res.json())
+    //        .then(c => {
+    //          userCards.push(c)
+    //        })
+    //      )
+    //      Promise.all(promises).then(() => { 
+    //        console.log(userCards); 
+    //        setCards(userCards); 
+    //        setMove(userCards.map(x => x.type)) 
+    //      })
+    //    })
+    //  } else {
+    //    setCards([])
+    //  }
    })
  }, [])
  

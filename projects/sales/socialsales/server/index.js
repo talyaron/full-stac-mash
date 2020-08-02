@@ -50,7 +50,7 @@ MongoClient.connect(url, { useUnifiedTopology: true }, function (err, database) 
     //               //db.close();
     //           });
 
-     // var myobj = {image: '' , title: 'Nike FE/NOM Flyknit',price: '$140', discount: '15% discount', comission: 'Comission $5.20' , ttldiscount: '$119 after discount'};
+    // var myobj = {image: '' , title: 'Nike FE/NOM Flyknit',price: '$140', discount: '15% discount', comission: 'Comission $5.20' , ttldiscount: '$119 after discount'};
     // db.collection("cards").insertOne(myobj, function (err, res) {
     //     if (err) throw err;
     //     console.log("1 document inserted");
@@ -77,40 +77,40 @@ app.post('/api/register', (req, res) => {
     const newUser = req.body;
     console.log(newUser)
 
-    db.collection("users").find({ email: newUser.email }).toArray(function(err, results) {
+    db.collection("users").find({ email: newUser.email }).toArray(function (err, results) {
         if (err) throw err;
         //console.log(results);
 
         if (results.length != 0) {
-                console.log('user already exists');
-                res.send({ error: "user already exists" })
+            console.log('user already exists');
+            res.send({ error: "user already exists" })
         } else {
             db.collection("customers").insertOne(newUser, function (err, result) {
                 if (err) console.log(err);
                 console.log("new user added");
                 //console.log(result);
-                res.send({ success:true, _id: result.ops[0]._id});  // send back the added user  _id
+                res.send({ success: true, _id: result.ops[0]._id });  // send back the added user  _id
             })
         }
     });
 });
 
 
-app.post('/api/login',(req, res)=>{
+app.post('/api/login', (req, res) => {
     //get the inputs from the client (email, password)
     const { email, password } = req.body;
     console.log(email)
 
-    db.collection("users").find({ email: email }).toArray(function(err, results) {
+    db.collection("users").find({ email: email }).toArray(function (err, results) {
         if (err) throw err;
         //console.log(results);
 
         if (results.length == 0) {  //check if the user exists in users - if not respond with user does not exist
-                res.send({ error: "user doesn't exist" })
+            res.send({ error: "user doesn't exist" })
         } else {
             //check if the passwords match
             if (results[0].password === password) {
-                res.send( { success:true, _id: results[0]._id} );  // send back the added user  _id
+                res.send({ success: true, _id: results[0]._id });  // send back the added user  _id
             } else {
                 res.send({ error: "wrong password!" })
             }
@@ -121,7 +121,7 @@ app.post('/api/login',(req, res)=>{
 
 
 app.get('/api/get-all-cards', (req, res) => {
-    db.collection("cards").find({ }).toArray(function(err, docs) {
+    db.collection("cards").find({}).toArray(function (err, docs) {
         if (err) console.log('Error', err);
         res.send(docs);
     })
@@ -142,13 +142,57 @@ app.get('/api/get-user-info/:id', (req, res) => {
     });
 })
 
-app.get('/api/get-card-by-id/:id', (req, res) => {
-    const id = new ObjectID(req.params.id);
-    const myQuery = { _id: id };
-    db.collection("cards").findOne(myQuery, (err, result) => {
-        if (err) console.log('Error', err);
-        console.log('get-card-by-id');
-        console.log(result);
-        res.send(result);
-    })
+app.get('/api/get-user-cards/:userId', (req, res) => {
+    try {
+        const { userId, type } = req.params;
+        console.log(userId, type);
+
+
+        const userIdObj = new ObjectID(userId);
+        const myQuery = { _id: userIdObj };
+
+        //get user's cards
+        db.collection('users').findOne(myQuery, async (err, userData) => {
+            if (err) console.log('Error', err);
+            
+
+            const cardsInUser = userData.cards;
+            console.log(cardsInUser)
+
+            if (cardsInUser && Array.isArray(cardsInUser)) {
+
+                //build queries
+                const productQueriesHotsales = [];
+                const productQueriesCurrentSales = [];
+
+                cardsInUser.forEach(card => {
+                    const productID = new ObjectID(card.id);
+                    if (card.type === 'currentSales') {
+                        productQueriesCurrentSales.push({ _id: productID })
+                    } else if (card.type === 'hotSales') {
+                        productQueriesHotsales.push({ _id: productID });
+                    }
+
+                })
+
+                //run queries
+                const cardsCurrentSales = await db.collection('cards').find({ "$or": productQueriesCurrentSales }).toArray();
+                const cardsHotSales = await db.collection('cards').find({ "$or": productQueriesHotsales }).toArray();
+
+                res.send({success:true, cardsCurrentSales,cardsHotSales});
+
+            } else {
+                res.send({ success: false })
+            }
+        })
+
+        // db.collection("cards").findOne(myQuery, (err, result) => {
+        //     if (err) console.log('Error', err);
+        //     console.log('get-card-by-id');
+        //     console.log(result);
+        //     res.send(result);
+        // })
+    } catch (err) {
+        console.log(err)
+    }
 })
