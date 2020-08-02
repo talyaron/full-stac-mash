@@ -9,32 +9,34 @@ import Whatsapp from '../../../img/Whatsapp.svg'
 
 const CardCurrentSale = (props) => {
 
-    const { image, title, earned, purchases } = props;
+    //const { image, title, earned, purchases } = props;
+    const {card} = props;
 
     return (
         <div className='card-current-sale'>
             <div className='card-current-sale__top'>
                 <div className='card-current-sale__image'>
-                    <img src={image} alt='img' />
+                    <img src={card.image} alt='img' />
                 </div>
+
                 <div className='card-current-sale__info-box'>
                     <div className='card-current-sale__title-box'>
                         <div className='card-current-sale__title'>
-                            {title}
+                            {card.title}
                         </div>
                     </div>
                     <div className='card-current-sale__details-box'>
                         <div className='card-current-sale__details-line'>
-                            {earned}
+                            {card.earned}
                         </div>
                         <div className='card-current-sale__details-line'>
-                            {purchases}
+                            {card.purchased}
                         </div>
-
                     </div>
-
                 </div>
+
             </div>
+
             <div className='card-current-sale__social-media'>
                 <div className='card-current-sale__social-media__icon'>
                     <img src={Facebook} alt='facebook' /></div>
@@ -48,7 +50,6 @@ const CardCurrentSale = (props) => {
                 <div className='card-current-sale__social-media__icon'>
                     <img src={Whatsapp} alt='whatsapp' /></div>
             </div>
-
 
         </div>
 

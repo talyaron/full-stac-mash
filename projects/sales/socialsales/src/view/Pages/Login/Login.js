@@ -28,7 +28,7 @@ const Login = () => {
                
 
                 if ('success' in data && data.success){
-                    history.push('/home')
+                    history.push('/home/' + data._id)
                     }else{
                         alert('Username or Password incorrect! Please try again.')
                         history.push('/login')

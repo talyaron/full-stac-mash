@@ -28,7 +28,7 @@ const Register = () => {
                     console.log(data)
 
                     if ('success' in data) {
-                        history.push('/home')
+                        history.push('/home/' + data._id)
                     } else {
                         alert('This user credentials already exist! Please login to your existing account.')
                         history.push('/login')

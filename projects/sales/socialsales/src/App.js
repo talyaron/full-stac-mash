@@ -23,7 +23,7 @@ function App() {
      
      
       <Switch>
-        <Route path="/home">
+        <Route path="/home/:id">
           <Home />
         </Route>
        

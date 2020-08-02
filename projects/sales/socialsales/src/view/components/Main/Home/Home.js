@@ -16,44 +16,92 @@ import Card from '../../Card/Card';
 import Header from '../../Header/Header';
 import Button from '../../Button/Button';
 
-function Home() {
 
-  const [cards, setCards] = useState([]);
-  // const [edit, setEdit] = useState(false)
+function Home() {  
 
-  useEffect(() => {
-    fetch('/api/get-all-cards')
-      .then(res => res.json())
-      .then(data => {
-        console.log(data)
-        setCards(data);
-      })
-  }, [])
+  let url = window.location.href; // string
+  let urlArr = url.split('/')
+  //console.log(urlArr)
+  let id = urlArr[urlArr.length-1];
+  //console.log(id);
 
-  return (
-    <div className="">
-      <Header />
-      <div className='cardsWrapper'>
-        {
-          cards.map((card, index) => {
-            return <h4 key={index}> <Card card={card} /> </h4>
-          })
-        }
-        {/* <div className='cardsWrapper'>
-      <Card image={Flyknit} title='Nike FE/NOM Flyknit' price='$140' discount='15% discount' comission='Comission $5.20' ttldiscount='$119 after discount' /> 
+ const [cards, setCards] = useState([]);
+ const [move, setMove] = useState([]);
 
-        <Card image={Jordan} title='Jordan Jacket' price='$150' discount='20% discount' comission='Comission $4.20' ttldiscount='$114 after discount' />
+ 
+ let userCards = [];
+ const promises = [];
 
-        <Card image={Golfjacket} title='Golf Jacket' price='$180' discount='30% discount' comission='Comission $4.50' ttldiscount='$116 after discount' />
-        <CardCurrentSale image={Nikerepel} title='Nike Repel' earned='Earned so far $135' purchases='Number of purchases: 35'/> 
-      </div> */}
-      </div>
-      <Button text='Add' />
-      <Button text='Add to your sales' />
+ useEffect(() => {
+   fetch(`/api/get-user-info/${id}`)
+   .then(res => res.json())
+   .then(data => {
+     console.log(data.cards)
+     if (data.cards) {
+       data.cards.map((x) => {
+         promises.push(
+           fetch(`/api/get-card-by-id/${x}`)
+           .then(res => res.json())
+           .then(c => {
+             userCards.push(c)
+           })
+         )
+         Promise.all(promises).then(() => { 
+           console.log(userCards); 
+           setCards(userCards); 
+           setMove(userCards.map(x => x.type)) 
+         })
+       })
+     } else {
+       setCards([])
+     }
+   })
+ }, [])
+ 
+
+ /*
+ useEffect(() => {
+   fetch('/api/get-all-cards')
+   .then(res => res.json())
+   .then(data => {
+     console.log(data)
+     setCards(data);
+     setMove(data.map(x => x.type))
+   })
+ }, [])
+ */
 
 
-    </div>
-  );
+ return (
+   <div className="">
+     <Header id={id}/>
+
+       <p>Hot Sales</p>
+     
+       <div  className='cardsWrapper'>
+         {  
+           cards.map((card, index) => {
+             if (move[index] == "regular") {  // "move"  state is not updated in DB
+               return <h4 key={index}>  <Button text='Add' index={index} move={move} setMove={setMove}/> <Card card={card}/> </h4>
+             }
+           })
+         }
+       </div>
+
+       <p>My Current Sales</p>
+
+       <div  className='cardsWrapper'>
+         {   
+           cards.map((card, index) => {
+               if (move[index] == "currentsale") { 
+               return <h4 key={index}> <Button text='Remove'  index={index} move={move} setMove={setMove}/> <CardCurrentSale card={card}/> </h4>
+               } 
+           })
+         } 
+       </div>
+       
+   </div>
+ );
 }
 
 export default Home;
