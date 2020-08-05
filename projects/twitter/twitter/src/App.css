@@ -1,0 +1,24 @@
+.grid {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: 
+     200px  1fr  150px;
+  grid-template-areas:
+    "pro    1    2"
+    "pro    3   colab";
+  
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.pro-features {
+  grid-area: pro;
+}
+
+.feature-collab{
+  grid-area: colab;
+}
+
+.grid>div{
+  background-color: brown;
+}
