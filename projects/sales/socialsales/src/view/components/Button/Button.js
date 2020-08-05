@@ -4,16 +4,25 @@ import './Button.scss';
 
     const Button = (props) => {
     
-        const {text, index, move, setMove } = props;
+        const {text, userId, index, cards, setCards, otherCards, setOtherCards } = props;
+        const card = cards[index];
     
         function moveProd(e) {  
             e.preventDefault();
             
-            if (move[index] == "regular") {
-                setMove(move.map((x,i) => { return ((i == index) ? 'currentsale' : x) }))   // lifting state up
-            } else {
-                setMove(move.map((x,i) => { return ((i == index) ? 'regular' : x) }))
-            }
+            setOtherCards([...otherCards,card]);
+            setCards( cards.filter( (x,i) => (i != index) ) )   // lifting state up 
+            
+            fetch(`/api/put-user-info/${userId}`, {  // update in DB
+                method: 'PUT',
+                body: JSON.stringify({ card }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(res => res.json())
+            .then(data=>{
+                console.log(data)
+            })
         }
     
         return (
@@ -21,5 +30,4 @@ import './Button.scss';
         )
     }
     
-
 export default Button;

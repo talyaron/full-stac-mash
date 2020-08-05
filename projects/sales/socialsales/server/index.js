@@ -128,7 +128,7 @@ app.get('/api/get-all-cards', (req, res) => {
 })
 
 
-app.get('/api/get-user-info/:id', (req, res) => {
+app.get('/api/get-user-info/:id', (req, res) => {  
     console.log(req.params.id)
     const id = new ObjectID(req.params.id);
     //find the specific product by id
@@ -142,11 +142,42 @@ app.get('/api/get-user-info/:id', (req, res) => {
     });
 })
 
+app.put('/api/put-user-info/:id', (req, res) => {
+    const { card  } = req.body;
+    console.log('put-user-info');
+    console.log(card._id)
+    console.log(req.params.id) // user ID
+    const id = new ObjectID(req.params.id);
+    //find the specific product by id
+    const myQuery = { _id: id };
+
+    db.collection('users').findOne(myQuery, async (err, result) => {
+        if (err) console.log('Error', err);
+        //res.send(result);
+        console.log(result);
+        let cardIdx = result.cards.findIndex((c) =>  c.id == card._id )
+        console.log("cardIdx:  " + cardIdx);
+
+        let userCards = [...result.cards];  // clone array
+        userCards[cardIdx].type = (result.cards[cardIdx].type == 'currentSales')? 'hotSales' : 'currentSales';
+
+        const newVal = { $set: { cards: userCards } };
+
+        await db.collection("users").updateOne(myQuery, newVal, function (err, res) {
+                    if (err) console.log(err);
+                    console.log("1 document updated"); 
+                });
+        res.send({ success: true })
+    });
+
+})
+
+
+
 app.get('/api/get-user-cards/:userId', (req, res) => {
     try {
-        const { userId, type } = req.params;
-        console.log(userId, type);
-
+        const { userId } = req.params;
+        console.log(userId);
 
         const userIdObj = new ObjectID(userId);
         const myQuery = { _id: userIdObj };
@@ -155,7 +186,6 @@ app.get('/api/get-user-cards/:userId', (req, res) => {
         db.collection('users').findOne(myQuery, async (err, userData) => {
             if (err) console.log('Error', err);
             
-
             const cardsInUser = userData.cards;
             console.log(cardsInUser)
 
@@ -172,26 +202,19 @@ app.get('/api/get-user-cards/:userId', (req, res) => {
                     } else if (card.type === 'hotSales') {
                         productQueriesHotsales.push({ _id: productID });
                     }
-
                 })
+                //console.log(productQueriesCurrentSales)
 
                 //run queries
-                const cardsCurrentSales = await db.collection('cards').find({ "$or": productQueriesCurrentSales }).toArray();
-                const cardsHotSales = await db.collection('cards').find({ "$or": productQueriesHotsales }).toArray();
+                const cardsCurrentSales = (productQueriesCurrentSales.length > 0)? await db.collection('cards').find({ "$or": productQueriesCurrentSales }).toArray() : [];
+                const cardsHotSales =     (productQueriesHotsales.length > 0)?     await db.collection('cards').find({ "$or": productQueriesHotsales }).toArray()     : [];
+                //console.log(cardsCurrentSales) 
 
                 res.send({success:true, cardsCurrentSales,cardsHotSales});
-
             } else {
                 res.send({ success: false })
             }
         })
-
-        // db.collection("cards").findOne(myQuery, (err, result) => {
-        //     if (err) console.log('Error', err);
-        //     console.log('get-card-by-id');
-        //     console.log(result);
-        //     res.send(result);
-        // })
     } catch (err) {
         console.log(err)
     }
