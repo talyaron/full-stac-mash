@@ -1,24 +1,123 @@
 .grid {
   display: grid;
-  grid-gap: 1rem;
+  /*grid-gap: 1rem; */
   grid-template-columns: 
-     200px  1fr  150px;
+     200px  1fr  250px;
   grid-template-areas:
-    "pro    1    2"
-    "pro    3   colab";
+    "pro    priv    assets"
+    "pro    debug   colab"
+    "pro    debug   colab"
+    "pro    debug   colab"
+    "pro    debug   colab";
   
   max-width: 1000px;
   margin: 0 auto;
+}
+
+.grid>div{
+  /* background-color: brown; */
+  border-left: solid 1px lightgray;
+  padding-left: 20px; 
 }
 
 .pro-features {
   grid-area: pro;
 }
 
-.feature-collab{
-  grid-area: colab;
+.pro-features>img{
+  margin-top: 20px;
+  /*margin-left: 20px;*/
 }
 
-.grid>div{
-  background-color: brown;
+.pro-features>img:hover{
+  background-color: lightsteelblue;
+  border-radius: 20px;
+}
+
+.item {
+  padding-left: 10px;
+  margin-right: 30px;
+}
+
+.item>span {
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+.item:hover{
+  background-color: lightsteelblue;
+  border-radius: 10px;
+}
+
+#home{
+  color: lightskyblue;
+}
+
+#btn {
+  font-weight: bold;
+  font-size: 0.6rem;
+  width: 80%;
+  padding: 6px;
+  background-color: lightskyblue;
+  color: white;
+  border: none;
+  border-radius: 10px;
+}
+
+.feature-privacy  {
+  grid-area: priv;  
+  border-bottom:  solid 1px lightgray;
+}
+
+.feature-privacy>div {
+  font-weight: bold;
+  display: inline-block;
+}
+
+.feature-privacy>img {
+ padding-left: 200px;
+ float: right;
+ padding-right: 20px;
+}
+
+.feature-debug {
+  grid-area:debug;
+  font-size: 0.5rem;
+  font-weight: normal;
+  color: grey;
+}
+
+.feature-debug>h2>div{
+  display: inline-block;
+  margin-left: 10px;
+ 
+}
+
+.feature-debug>div{
+  margin-left: 30px;
+}
+
+.feature-debug>div>img{
+  margin-left: 6px;
+}
+
+
+.feature-assets {
+  grid-area: assets;
+}
+
+.feature-assets>div{
+  margin-right: 30px;
+  background-color: lightgray;
+  border-radius: 10px;
+  text-align: center;
+}
+
+
+.feature-collab{
+  grid-area: colab;
+  background-color: lightgray;
+  opacity: 0.8;
+  border-radius: 6px;
+  margin: 20px;
 }
