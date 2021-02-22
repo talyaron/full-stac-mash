@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS</title>
+</head>
+
+<body>
+    <h1 id='hello'>Hi sombody</h1>
+    <script>
+
+        //primitive variables (by value)
+        let x = 6;
+        const y = 8;
+
+        x = 9;
+        x2 = x;
+        x = 1;
+
+        console.log(`x = ${x}, x2 = ${x2}, y = ${y}`);
+
+        //non primitve (by refernce)
+        //object {key: value, key:value}
+        let obj = { name: 'Masha', surename: 'Alarcon' } // a (key), 2 value
+        console.log(obj)
+        let array = ['apple', 'orange', obj]
+        console.log(array)
+
+        let obj2 = obj; // i refence to a location in memory
+        console.log(obj2)
+
+        obj.name = 'masha';
+
+        console.log(obj2)
+
+        let array2 = array;
+        array[0] = 'bannana'
+        console.log(array, array2)
+
+        console.log(array2[2].surename)
+
+        //object
+        console.log(obj['name'], obj.name);
+
+
+    </script>
+</body>
+
+</html>

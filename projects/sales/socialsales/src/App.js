@@ -1,0 +1,45 @@
+import React from 'react';
+import './App.scss';
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route 
+  
+} from "react-router-dom";
+
+
+//compnents
+import Home from './view/components/Main/Home/Home';
+import Start from './view/Pages/Start/Start';
+import Register from './view/Pages/Register/Register';
+import Login from './view/Pages/Login/Login';
+
+
+function App() {
+  return (
+    <Router>
+    <div>
+     
+     
+      <Switch>
+        <Route path="/home/:id">
+          <Home />
+        </Route>
+       
+        <Route path="/register">
+          <Register />
+        </Route>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route path="/">
+          <Start />
+        </Route>
+      </Switch>
+    </div>
+  </Router>
+  );
+}
+
+export default App;

@@ -1,0 +1,22 @@
+.app{
+    text-align: center;
+}
+.wrapper{
+    max-width: 600px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+img{
+    /* height: 400px;  */
+    width: 100%;
+    border: 2px solid black;
+   
+    
+}
+
+input{
+    font-size: 2rem;
+    padding: 5px;
+}

@@ -1,0 +1,66 @@
+.header {
+    background-color: var(--strong);
+    color: var(--white);
+    border-radius: 0px 0px var(--softRound) var(--softRound);
+    width: 100%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.39);
+
+    &__box {
+        text-align: center;
+
+        &--small {
+            display: flex;
+            justify-content: space-around;
+            //justify-content: space-between;
+            flex-direction: row;
+            //justify-content: space-evenly;
+            //align-content: center;
+        }
+        &--tiny {
+            padding: 20px;
+            margin: 10px;
+            text-align: center;
+        }
+    }
+
+    &__logo {
+        display: flex;
+        justify-content: center;
+
+        img {
+            height: 7rem;
+        }
+
+        div {
+            font-size: 2.5rem;
+            height: 7rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    }
+
+    &__sub-title {
+        font-size: var(--fontBig);
+        color: var(--lightGray);
+
+        &--small {
+            font-size: 1rem;
+            color: var(--lightGray);
+            display: flex;
+            align-items: center;
+
+            *{
+                margin: 0px 5px;
+            }
+        }
+    }
+
+    &__money {
+        font-size: 5rem;
+
+        &--small {
+            font-size:2rem;
+        }
+    }
+}

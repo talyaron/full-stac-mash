@@ -1,0 +1,6 @@
+<h1>To do</h1>
+<button onclick="addProduct()">Add Product</button>
+{{#each todos}}
+    <p onclick="updateItemtName('{{this.itemId}}')" id="itme-id-{{this.itemId}}">{{this.itemName}} </p>
+{{/each}}
+<div id='theProduct'>Here you will have the product</div>

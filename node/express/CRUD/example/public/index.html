@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=§, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Hi</h1>
+    <div id='products'></div>
+    <form onsubmit="addProduct(event)">
+        <label>Product</label>
+        <input type='text' name='name' placeholder="Product" />
+        <label>Price</label>
+        <input type='number' name='price' placeholder="Price" />
+        <input type="submit" value="Send" />
+    </form>
+    <script>
+
+        fetch('/api/get-products')
+            .then(responce => responce.json())
+            .then(res2 => {
+                console.log('first line')
+                console.log(res2)
+
+                let producrtsSTR = '';
+                res2.forEach(product => {
+                    producrtsSTR += `<p>Name: ${product.name} Price: ${product.price}$</p>`
+                })
+
+                document.getElementById('products').innerHTML = producrtsSTR;
+            });
+
+        console.log('second line')
+
+        console.log('third line');
+
+
+        function addProduct(e) {
+            e.preventDefault();
+
+            console.log(e)
+
+            let { name, price } = e.target.elements;
+            name = name.value;
+            price = price.value;
+            console.log(name, price)
+
+            fetch('/api/add-product', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({name, price})
+            })
+            .then(responce => responce.json())
+            .then(res2 => {
+                console.log('first line')
+                console.log(res2)
+
+                let producrtsSTR = '';
+                res2.forEach(product => {
+                    producrtsSTR += `<p>Name: ${product.name} Price: ${product.price}$</p>`
+                })
+
+                document.getElementById('products').innerHTML = producrtsSTR;
+            });
+        }
+        
+    </script>
+</body>
+
+</html>

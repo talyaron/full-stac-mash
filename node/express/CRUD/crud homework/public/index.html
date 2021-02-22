@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Express</title>
+    <link rel='stylesheet' href="style.css">
+</head>
+
+<body>
+    <header>
+        <a class='linkHeader' href='index.html'>Home</div>
+         <a class="linkHeader" href='foundations.html'>Foundations</a>
+         <a class="linkHeader" href='eyeshadows.html'>Eyeshadows</a>
+         <a cllass="linkHeader" href='lipsticks.html'>Lipsticks</a>
+
+         <h1>Hello to Masha's Makeup</h1>
+    </header>
+    
+    <div id='products'></div>
+    
+    <form onsubmit="addProduct(event)">
+        <label>type</label>
+        <input type='text' name='type' placeholder="type" />
+        <label>productId</label>
+        <input type='number' name='productId' placeholder="productId" />
+        <label>img</label>
+        <input type='text' name='img' placeholder="img" />
+        <label>name</label>
+        <input type='text' name='name' placeholder="name" />
+        <label>price</label>
+        <input type='number' name='price' placeholder="price" />
+        <input type="submit" value="Send" />
+    </form>
+    <footer>
+        All rights reserved to Masha Alarcon
+    </footer>
+    <script src='functions.js' ></script>
+    <script>
+        getAllProducts();
+    </script>
+</body>
+
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masha first site</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Hi Masha</h1>
+    <p id='message'></p>
+    <script>
+        fetch('/myName', {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name: 'Masha Alarcon' })
+        })
+            .then(res=>res.json())
+            .then(function (data) {
+                console.log('Request succeeded with JSON response', data);
+                const {message} = data;
+                document.getElementById('message').innerText = message;
+            })
+    </script>
+</body>
+
+</html>

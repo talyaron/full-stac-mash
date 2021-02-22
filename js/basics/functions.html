@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function add(a, b) {
+            // local scope: a exists and is 2; b exists and eq 3
+            return a + b
+        }
+        
+        let x = add(2, 3)
+
+        //let a =2
+        //let b = 3
+        console.log(x);
+
+        //three way to write a function
+        function multi(a, b) {
+            return a * b
+        }
+
+        //anonymous function
+        const multi2 = function (a, b) {
+            return a * b
+        }
+
+        //arrow function
+        const multi3 = (a,b) => {
+            return a * b
+        }
+
+        
+
+    </script>
+</body>
+
+</html>

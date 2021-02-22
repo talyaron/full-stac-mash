@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Promise</title>
+</head>
+
+<body>
+    <h1 id='hi'>H1</h1>
+</body>
+<script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-firestore.js"></script>
+<script>
+
+
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyBW4Ty8cdaUGohEbBwXkoPGe_fh_yDz5zM",
+        authDomain: "delibtests.firebaseapp.com",
+        databaseURL: "https://delibtests.firebaseio.com",
+        projectId: "delibtests",
+        storageBucket: "delibtests.appspot.com",
+        messagingSenderId: "612739213308",
+        appId: "1:612739213308:web:0fbf387e2c9919d8"
+    };
+    firebase.initializeApp(config);
+    const DB = firebase.firestore();
+
+
+
+   
+    function getPromiseFromDB() {
+      
+        return new Promise((resolve, reject) => {
+
+           
+            DB.collection('tests').doc('promiseTest').get().then(testDB=> {
+               
+                if(testDB.exists){
+
+                    resolve(testDB.data().aa);
+                } else {
+                    reject('data dosnt exists')
+                }
+            })
+        })
+
+    }
+
+    function getSecondPromiseFromDB(docName) {
+       
+        return new Promise((resolve, reject) => {
+
+         
+            DB.collection('tests').doc(docName).get().then(testDB=> {
+            
+                if(testDB.exists){
+
+                    resolve(testDB.data().result);
+                } else {
+                    reject('data dosnt exists')
+                }
+            })
+        })
+
+    }
+
+    
+    async function asyncTest() {
+       
+       let docName = await getPromiseFromDB();
+     
+       let result = await getSecondPromiseFromDB(docName)
+
+       
+    }
+
+    asyncTest();
+
+    
+
+</script>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>My Calorie Counter</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='CalorieCount.css'>
+    
+</head>
+<body>
+  <div class="mainDiv">
+        <h3>Choose your favorite food to calculate calories</h3>
+        <div class="favFood">
+            <h5>Total Calories: </h5>
+            <select id="selectFood">
+                 <option  id="pick">Pick an item</option> 
+                 <option value="avocado" id="avo">Avocado</option>
+                 <option value="egg" id="egg">Egg</option>
+                 <option  value="tomato" id="tom">Tomato</option>
+                 <option value="apple" id="app">Apple</option>
+           </select>
+           <button id="addBtn">Add item</button>
+        </div>
+        <div id="addedItems">
+    
+        </div>
+    </div>
+     
+
+    <script src='CalorieCount.js'></script>
+</body>
+
+</html>

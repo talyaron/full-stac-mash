@@ -1,0 +1,14 @@
+.buttonsWrapper{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttonsWrapper>button{
+    background-color: teal;
+    color: white;
+    width: fit-content;
+    font-size: 2rem;
+    padding: 20px 30px;
+    border-radius: 10px;
+}

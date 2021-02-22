@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+</head>
+
+<body>
+    <input type='text' onkeyup="setToDOM(event)" />
+    <input type="color" oninput="choseColor(event)" />
+    <input type="number" oninput="multiply(event)"/>
+    <input type="month" oninput="changeMonth(event)" />
+    <p id='textOutput'><span>start</span></p>
+    <p id='secontOuptput'></p>
+    <script>
+
+        const outputParagraph = document.getElementById('textOutput')
+
+        function setToDOM(e) {
+            const value = e.target.value;
+
+            outputParagraph.innerText = value;
+
+        }
+
+        function changeMonth(e) {
+            console.log('chose a month')
+            console.log(e.target.value)
+        }
+
+        function choseColor(e) {
+            console.log('chosing a color')
+            const color = e.target.value;
+            outputParagraph.style.color = color;
+
+        }
+
+        function multiply(e){
+            let value = e.target.value;
+
+            let newParagraph = outputParagraph.innerHTML;
+            let parg = '';
+            for(let i=0; i<value;i++){
+                parg+= newParagraph
+            }
+
+            const secontOuptput = document.getElementById('secontOuptput');
+            secontOuptput.innerHTML = parg;
+           
+        }
+
+
+
+    </script>
+</body>
+
+</html>

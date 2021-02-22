@@ -1,0 +1,28 @@
+html{
+    background-image: url(./pic/CalBackground.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.mainDiv{
+    text-align: center;
+}
+
+p {
+    width: 200px;
+    /*margin-left: 400px;*/
+    text-align: center;
+    background-color: lightgreen;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 2px;
+    display: inline-block;
+}
+
+#addedItems button {
+    display: inline-block;
+}
+
+#addedItems {
+    background-color:none;
+}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Form Airbnb</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='LikeAirBnbCss.css'>
+    <!-- <script src='main.js'></script> -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="container">
+    <header>
+        <ul>
+            <li> <a href="url">HOME</a> </li>
+            <li> <a href="url">HELP</a> </li>
+            <li> <a href="url">LOGIN</a> </li>
+            <li> <a href="url">SIGNUP</a> </li>
+        </ul>
+    </header>
+
+    <div class="signup-form">
+
+        <form onsubmit="getFormInformation(event)">  <!--action="success.html" method="POST"> -->
+            <h2>Find place</h2>
+
+            <div class="form-group">
+                <div id="destination"> 
+                    <p>WHERE</p>
+                    <input type="text" name='place'  placeholder="Anywhere"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div id="checkin">
+                    <p>CHECKIN</p>
+                    <input type="date" name="checkInDate" placeholder="DD/MM/YYYY"/>
+                </div>
+                <div id="checkout">
+                    <p>CHECKOUT</p>
+                    <input type="date" name="checkOutDate" placeholder="DD/MM/YYYY"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div id="guestNum"> 
+                    <p>GUESTS</p>
+                    <select name='guests'>
+                        <option>1 Guest</option>
+                        <option>2 Guest</option>
+                        <option>3 Guest</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <br>
+                <button type="submit">Search</button>
+             </div>
+        </form>
+        <div class="modal" id='message'>message</div>
+    </div>
+</div>
+
+<div>
+    <div id='news'>
+        <h2> News </h2>
+        <p>  What happens today </p>
+    </div>
+
+    <div id='advertise'>
+        <h2> Explore </h2>
+
+        <ul>
+            <li> <a href="url">Stays</a> </li>
+            <li> <a href="url">Experiences</a> </li>
+            <li> <a href="url">Adventures</a> </li>
+        </ul>
+
+    </div>
+</div>
+
+<footer> 
+
+</footer>
+
+<script>
+
+    class Travelr{
+        constructor(location, checkin, checkout, guests){
+            this.location = location;
+            this.checkin = checkin;
+            this.checkout = checkout;
+            this.guests = guests;
+        }
+
+        sendConformation(){
+            let messageModal = document.getElementById('message')
+            messageModal.style.display = 'block'
+            messageModal.innerText = `Thank you your request for ${this.guests} was recviced`;
+        }
+    }
+
+
+    function getFormInformation(e) {
+            e.preventDefault()
+            console.log(e)
+            let location = e.target.elements.place.value;
+            let checkin = e.target.elements.checkInDate.value;
+            let checkout = e.target.elements.checkOutDate.value;
+            let guests = e.target.elements.guests.value
+
+            let travler = new Travelr(location, checkin, checkout, guests)
+           
+            travler.sendConformation();
+    }
+
+</script>
+    
+</body>
+</html>

@@ -1,0 +1,23 @@
+<h1>Welcome to Food List!</h1>
+
+{{#each foods}}
+    <span id = "remove-{{this.itemId}}">  <p> Food: {{this.name}} <span id="item-id-{{this.itemId}}">calories: {{this.calories}}</span>
+        <button onclick="UpdateCals('{{this.itemId}}')">Update</button>
+        <button onclick="RemoveItem('{{this.itemId}}')">Remove</button>
+        <button onclick="Move2menu('{{this.itemId}}')">Add to Daily Menu!</button></p> </span>
+{{/each}}
+
+<div id='NewFoods'></div>
+
+    <form onsubmit="AddItem(event)">
+        <label>itemId</label>
+        <input type='number' name='itemId' placeholder="itemId" />
+        <label>name</label>
+        <input type='text' name='name' placeholder="name" />
+        <label>calories</label>
+        <input type='number' name='calories' placeholder="calories" />
+        <input class="submit" type="submit" value="Add to List" />
+    </form>
+    <br><br>
+
+    

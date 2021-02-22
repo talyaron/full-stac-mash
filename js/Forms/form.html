@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A form</title>
+</head>
+
+<body>
+    <form onsubmit="getFormInformation(event)">
+        <input name='username' type="text" placeholder="your name" />
+        <input name='password' type="password" placeholder="password" />
+        <select name='guests'>
+            <option>1 Guest</option>
+            <option>2 Guest</option>
+            <option>3 Guest</option>
+        </select>
+        <input type='submit' />
+    </form>
+    <script>
+
+        function getFormInformation(e) {
+            e.preventDefault()
+            console.log(e)
+            let username = e.target.elements.username.value;
+            let password = e.target.elements.password.value;
+            let guests = e.target.elements.guests.value
+
+            console.log(username, password, guests);
+
+        }
+    </script>
+</body>
+
+</html>

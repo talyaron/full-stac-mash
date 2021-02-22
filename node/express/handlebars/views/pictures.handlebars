@@ -1,0 +1,16 @@
+<h1>Pictures</h1>
+ <div class="wrapper">
+
+      
+    {{#each pictures}}
+         {{#if this.show}}
+        <div>
+            <img class="moveToHomePicture" src='img/{{this.img}}' alt='some flower'/>
+            <div>
+                name: {{this.name}}
+            </div>
+        </div>
+         {{/if}}
+    {{/each}}
+   
+</div>

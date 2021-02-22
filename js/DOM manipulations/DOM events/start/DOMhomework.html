@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Page Title</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <script src='main.js'></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <h1>DOM EVENTS</h1>
+  <div class='buttonsWrapper'>
+    <button onclick='changeSize(70)'>Small</button>
+    <button onclick='changeSize(200)'>Meduim</button>
+    <button onclick='changeSize(400)'>Large</button>
+  </div>
+
+  <h1>Great Pictures</h1>
+  <img src="pics/san-francisco.jpg" alt="This is my picture" class='image'>
+  <img src="./pics/miami.jpg" alt="This is my picture" class='image'>
+  <img src="./pics/hawaii.jpg" alt="This is my picture" class='image'>
+  <img src="./pics/grand-canyon.jpg" alt="This is my picture" class='image'>
+  <img src="./pics/new-york.jpg" alt="This is my picture" class='image'>
+  <img src="./pics/yosemite.jpg" alt="This is my picture" class='image'>
+
+
+
+  <p>I am paragraph number (i)</p>
+  <p>I am paragraph number (i)</p>
+  <p>I am paragraph number (i)</p>
+  <p>I am paragraph number (i)</p>
+  <p>I am paragraph number (i)</p>
+  <p>I am paragraph number (i)</p>
+  <p>I am paragraph number (i)</p>
+  <p>I am paragraph number (i)</p>
+  <script>
+
+
+
+
+    const images = document.querySelectorAll('.image');
+
+    images.forEach(image => {
+      image.style.width = '100px';
+      image.style.height = '50px'
+      console.dir(image)
+    })
+
+    const paragraphs = document.getElementsByTagName('p');
+
+    for (let i = 0; i < paragraphs.length; i++) {
+      let j = i + 1
+      paragraphs[i].innerHTML = "I am paragraph number " + j;
+    }
+
+
+    const buttons = document.querySelectorAll('button');
+
+    buttons.forEach(button => {
+      button.addEventListener('mouseout', () => {
+        console.log('mouseout........')
+      });
+      button.style.background = 'orange'
+
+
+      button.addEventListener('mouseover', () => {
+        images.forEach(image => {
+          image.style.height = `${Math.random() * 240}px`;
+          image.style.transform = `rotate(${Math.random() * 180}deg)`;
+        })
+      });
+    })
+
+
+
+    function changeSize(size) {
+
+
+      const images = document.querySelectorAll('.image');
+
+      images.forEach(image => {
+        image.style.width = `${size}px`;
+        image.style.height = `${size * .5}px`
+      })
+
+      const buttons = document.querySelectorAll('button');
+
+      buttons.forEach(button => {
+        console.dir(button)
+        button.style.width = `${size}px`;
+        button.style.height = `${size * .5}px`;
+        button.style.fontSize = `${size * .2}px`;
+        // button.style.padding = `${size * .2}px ${size * .3}px`;
+      })
+    }
+
+    // EVENT: making the mage jump with oncontextmenu
+    images.forEach(image => {
+      image.addEventListener('contextmenu',(e)=>{
+        const selectedImage = e.target;
+        console.log(selectedImage.x, selectedImage.y)
+        selectedImage.style.bottom = `${Math.random()*200}px`;
+      })
+    })
+
+  </script>
+
+</body>
+
+</html>

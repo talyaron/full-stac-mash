@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+
+<body>
+
+    <p>This is my paragraph 1</p>
+    <p>This is my paragraph 2</p>
+    <p>This is my paragraph 3</p>
+    <p>This is my paragraph 4</p>
+    <p>This is my paragraph 5</p>
+    <p>This is my paragraph 6</p>
+    <p>This is my paragraph 7</p>
+    <p>This is my paragraph 8</p>
+
+    <img src="./pics/hawaii.jpg" alt="This is my picture" class='image'>
+    <img src="./pics/new-york.jpg" alt="This is my picture" class='image'>
+
+
+    <script>
+
+        const paragraphs = document.querySelectorAll('p')
+
+        paragraphs.forEach(p => {
+            p.style.fontFamily = 'Serif';
+            p.style.fontSize = '1rem';
+            p.style.color = 'purple';
+            console.dir(p);
+        })
+
+
+        paragraphs.forEach(p => {
+            p.addEventListener('mouseover', (e) => {
+                p.style.color = 'pink';
+                p.style.background = 'yellow';
+                p.style.fontSize = '2rem';
+
+            })
+
+
+
+            p.addEventListener('copy', (e) => {
+                p.style.fontFamily = 'Cursive';
+                p.style.color = 'orange';
+                p.style.background = 'none';
+
+
+            })
+            p.addEventListener('mouseleave', (e) => {
+                p.style.background = 'none';
+
+
+
+
+            })
+
+            p.addEventListener('dblclick', (e) => {
+                p.style.background = 'red'
+                p.style.fontSize = '3rem';
+
+            })
+
+            p.addEventListener('contextmenu', (e) => {
+                p.style.color = 'blue';
+                p.style.background = 'grey';
+
+            })
+
+        })
+
+        const images = document.querySelectorAll('.image');
+
+        images.forEach(image => {
+            image.style.width = '200px';
+            image.style.height = '100px'
+            console.dir(image.src)
+        })
+
+        images.forEach(image => {
+            image.addEventListener('click',e => {
+                console.dir(e.target.src);
+                alert(e.target.src)
+            });
+        })
+
+
+
+        
+
+
+
+    </script>
+
+</body>
+
+</html>
